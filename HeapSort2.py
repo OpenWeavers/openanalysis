@@ -15,7 +15,7 @@ class Heap:
     def add(self, element):
         self.count += 1
         insert_position = self.count
-        while insert_position >= 1 and self.compare_to(self.elements[insert_position/2], element):
+        while insert_position > 1 and self.compare_to(self.elements[insert_position/2], element):
             self.elements[insert_position] = self.elements[insert_position/2]
             insert_position /= 2
         self.elements[insert_position] = element
