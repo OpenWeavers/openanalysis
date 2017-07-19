@@ -7,14 +7,14 @@ Introduction to OpenAnalysis
 ========================================
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Language Tutorial:
    :glob:
 
    Langauge/*
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Library Tutorial:
    :glob:
 
