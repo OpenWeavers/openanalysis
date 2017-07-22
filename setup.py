@@ -3,7 +3,7 @@ import os
 from setuptools import setup
 import sys
 from platform import platform
-
+#Python3 installations
 if sys.version_info < (3, 5):
     if 'Ubuntu' in platform() or 'Debian' in platform():
         os.system("sudo apt-get install python3 python3-pip")
