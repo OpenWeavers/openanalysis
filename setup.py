@@ -21,13 +21,15 @@ else:
 
 setup(
     name="OpenAnalysis",
-    version="0.0.1",
+    version="0.0.2",
     author="OpenWeavers",
     description="An open source package to analyse and visualise algorithms and data structures",
     license="GPLv3+",
     keywords="OpenWeavers product",
     url="http://openalgorithm.readthedocs.io",
-    packages=['OpenAnalysis'],
+    packages=['OpenAnalysis',
+              'AnalysisTest',
+    ],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Software Development :: Libraries :: Python Modules",
