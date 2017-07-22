@@ -93,7 +93,7 @@ todo_include_todos = False
 # documentation.
 #
 # html_theme_options = {}
-html_logo = 'res/logo256.png'
+html_logo = 'res/android-chrome-160.png'
 html_favicon = 'res/icon.ico'
 applehelp_icon = 'res/logo16.png'
 # Add any paths that contain custom static files (such as style sheets) here,
