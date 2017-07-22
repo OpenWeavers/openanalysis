@@ -112,7 +112,7 @@ htmlhelp_basename = 'OpenAnalysisdoc'
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     #
-    # 'papersize': 'letterpaper',
+    papersize': 'a4paper',
 
     # The font size ('10pt', '11pt' or '12pt').
     #
@@ -126,6 +126,8 @@ latex_elements = {
     #
     # 'figure_align': 'htbp',
 }
+
+latex_logo = 'res/OpenAnalysis1080.png'
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
