@@ -93,7 +93,7 @@ todo_include_todos = False
 # documentation.
 #
 # html_theme_options = {}
-html_logo = 'res/OpenAnalysis1080.png'
+html_logo = 'res/logo32.png'
 html_favicon = 'res/icon.ico'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
