@@ -21,7 +21,7 @@ else:
 
 setup(
     name="OpenAnalysis",
-    version="0.0.1",
+    version="0.0.2",
     author="OpenWeavers",
     description="An open source package to analyse and visualise algorithms and data structures",
     license="GPLv3+",
