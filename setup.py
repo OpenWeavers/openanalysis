@@ -13,7 +13,7 @@ if 'Ubuntu' in platform() or 'Debian' in platform():
     cache = apt.cache.Cache()
     cache.update()
     for pkg in pkgs:
-        cpkg = cache[pkgs]
+        cpkg = cache[pkg]
         if cpkg.is_installed:
             print "{0} aleady installed".format(pkg)
         else:
@@ -43,7 +43,7 @@ else:
         """
         Error...
         Unsupported OS...
-        Download and install python3-tk for your specific OS
+        Download and install python3-tk, ffmpeg and python-gi-cairo for your OS
         """)
     sys.exit(0)
 
