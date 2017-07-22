@@ -28,7 +28,7 @@ setup(
     keywords="OpenWeavers product",
     url="http://openalgorithm.readthedocs.io",
     packages=['OpenAnalysis',
-              'AnalysisTest'
+              'AnalysisTest',
     ],
     classifiers=[
         "Development Status :: 3 - Alpha",
