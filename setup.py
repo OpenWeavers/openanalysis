@@ -17,7 +17,7 @@ if 'Ubuntu' in platform() or 'Debian' in platform():
     for pkg in pkgs:
         cpkg = cache[pkg]
         if cpkg.is_installed:
-            print "{0} aleady installed".format(pkg)
+            print("{0} aleady installed".format(pkg))
         else:
             cpkg.mark_install()
         try:
@@ -31,9 +31,9 @@ elif 'Fedora' in platform():
     installed = [x.name for x in inst]
     for pkg in pkgs:
         if pkg in installed:
-            print "{0} is already installed".format(pkg)
+            print("{0} is already installed".format(pkg))
         else:
-            print "Installing {0}".format(pkg)
+            print("Installing {0}".format(pkg))
             kwarg = {
                 'name':pkg
             }
