@@ -13,7 +13,7 @@ if 'Ubuntu' in platform() or 'Debian' in platform():
     cache = apt.cache.Cache()
     cache.update()
     for pkg in pkgs:
-        cpkg = cache[pkgs]
+        cpkg = cache[pkg]
         if cpkg.is_installed:
             print "{0} aleady installed".format(pkg)
         else:
