@@ -11,14 +11,12 @@ class StringMatchingAlgorithm:
     """
     Base class for all (Comparision Bases) String Matching Algorithms
     """
-    s_count = 0  # Number of Successful comparison
-    count = 0  # Total Number of comparision
-    name = ""  # Name of the String Matching Algorithm
-    basic_op = 0
-    dat = np.array([])
-
     def __init__(self, name):
         self.name = name
+        self.basic_op = 0
+        self.s_count = 0  # Number of Successful comparison
+        self.count = 0  # Total Number of comparision
+        self.dat = np.array([])
 
     def match(self, text: str, pattern: str):
         """
@@ -62,6 +60,7 @@ class StringMatchingAnalyzer:
                 pos = randint(0, len(text)-m)
                 pattern = text[pos:pos+m]   # Select a random pattern of size m from text, where m<n
                 self.matcher.match(text, pattern)   # Run the string matching algorithm with T and P as parameters
+                print(self.matcher.basic_op)
                 data_array.append((n, m, self.matcher.basic_op))
 
         dat = np.array(data_array)
@@ -78,7 +77,7 @@ class StringMatchingAnalyzer:
         ax.set_xlabel('length of text')
         ax.set_ylabel('length of pattern')
         ax.set_zlabel('number of basic operations performed')
-        ax.set_title('Brute force String Matching Analysis')
+        ax.set_title('%s Analysis'% self.matcher.name)
         ax.set_zlim3d(np.min(Z), np.max(Z))
         fig.colorbar(surf)
         plt.show()

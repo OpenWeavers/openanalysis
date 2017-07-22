@@ -7,7 +7,7 @@ class BruteForceMatch(StringMatchingAlgorithm):
     """
 
     def __init__(self):
-        StringMatchingAlgorithm.__init__(self, "Brute Force Matching")
+        StringMatchingAlgorithm.__init__(self, "Brute Force String Matching")
 
     def match(self, text: str, pattern: str):
         # can implement __call__ method to use object as function
@@ -32,5 +32,34 @@ class BruteForceMatch(StringMatchingAlgorithm):
         return False
 
 
+class Horspool(StringMatchingAlgorithm):
+    def __init__(self):
+        StringMatchingAlgorithm.__init__(self, "Hosrpool String Matching")
+        self.shift_table = {}
+        self.pattern = ''
+
+    def generate_shift_table(self, pattern):
+        self.pattern = pattern
+        for i in range(0, len(pattern) - 1):
+            self.shift_table.update({pattern[i]: len(pattern) - 1 - i})
+
+    def match(self, text: str, pattern: str):
+        StringMatchingAlgorithm.match(self, text, pattern)
+        self.generate_shift_table(pattern)
+        i = len(self.pattern) - 1
+        while i < len(text):
+            j = 0
+            while j < len(self.pattern) and text[i-j] == self.pattern[len(self.pattern)-1-j]:
+                j += 1
+            self.basic_op += j
+            if j == len(self.pattern):
+                return i-len(self.pattern)+1
+            if text[i] in self.shift_table:
+                i += self.shift_table[text[i]]
+            else:
+                i += len(self.pattern)
+        return -1
+
+
 if __name__ == "__main__":
-    StringMatchingAnalyzer(BruteForceMatch()).analyze()
+    StringMatchingAnalyzer(Horspool()).analyze()
