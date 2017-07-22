@@ -1,3 +1,4 @@
+# Setup for OpenAnalysis
 import os
 from setuptools import setup
 import sys
@@ -13,7 +14,7 @@ else:
 	sys.stderr.write(
 	"""
 	Error...
-	Different OS...
+	Unsupported OS...
 	Download and install python3-tk for your specific OS
 	""")
 	sys.exit(0)
