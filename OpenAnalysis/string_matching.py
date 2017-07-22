@@ -38,7 +38,7 @@ class StringMatchingAnalyzer:
     max_patt_length = 1000
     text = ''
     pattern = ''
-    samples_list = os.listdir('StringMatchingSamples')
+    samples_list = os.listdir('../OpenAnalysis/StringMatchingSamples')
     # The samples are text files stored in StringMatchingSamples directory of Current Working
     # Directory. You can download the sample tar.gz texts from the SMART website.
     # https://www.dmi.unict.it/~faro/smart/download/data/
@@ -49,7 +49,7 @@ class StringMatchingAnalyzer:
 
     def analyze(self):
         # Analyzes the matching algorithm
-        file = open(os.path.join(os.path.abspath('StringMatchingSamples'), self.samples_list[0]), 'r')
+        file = open(os.path.join(os.path.abspath('../OpenAnalysis/StringMatchingSamples'), self.samples_list[randint(0, 1)]), 'r')
         file_text = file.read()
         data_array = []
         print('please wait while analysing...')
@@ -77,7 +77,8 @@ class StringMatchingAnalyzer:
         ax.set_xlabel('length of text')
         ax.set_ylabel('length of pattern')
         ax.set_zlabel('number of basic operations performed')
-        ax.set_title('%s Analysis'% self.matcher.name)
+        ax.set_title('%s Analysis' % self.matcher.name)
         ax.set_zlim3d(np.min(Z), np.max(Z))
         fig.colorbar(surf)
+        plt.tight_layout()
         plt.show()
