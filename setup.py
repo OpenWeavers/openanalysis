@@ -27,7 +27,9 @@ setup(
     license="GPLv3+",
     keywords="OpenWeavers product",
     url="http://openalgorithm.readthedocs.io",
-    packages=['OpenAnalysis'],
+    packages=['OpenAnalysis',
+              'AnalysisTest'
+    ],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Software Development :: Libraries :: Python Modules",
