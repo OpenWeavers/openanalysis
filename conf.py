@@ -93,8 +93,9 @@ todo_include_todos = False
 # documentation.
 #
 # html_theme_options = {}
-html_logo = 'res/logo32.png'
+html_logo = 'res/logo256.png'
 html_favicon = 'res/icon.ico'
+applehelp_icon = 'res/logo16.png'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
@@ -130,7 +131,7 @@ latex_elements = {
     'classoptions': ',openany,oneside'
 }
 
-latex_logo = 'res/OpenAnalysis1080.png'
+latex_logo = 'res/logo256.png'
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
