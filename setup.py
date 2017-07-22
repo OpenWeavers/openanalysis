@@ -2,14 +2,16 @@
 import os
 from setuptools import setup
 import sys
-import apt
-import yum
 from platform import platform
 
 if sys.version_info < (3, 5):
-    os.system("sudo apt-get install python3 python3-pip")
+    if 'Ubuntu' in platform() or 'Debian' in platform():
+        os.system("sudo apt-get install python3 python3-pip")
+    else:
+         os.system("sudo yum install python3 python3-pip")
 pkgs = ["python3-tk", "ffmpeg", "python-gi-cairo"]
 if 'Ubuntu' in platform() or 'Debian' in platform():
+    import apt
     cache = apt.cache.Cache()
     cache.update()
     for pkg in pkgs:
@@ -23,6 +25,7 @@ if 'Ubuntu' in platform() or 'Debian' in platform():
         except Exception, e:
             sys.stderr.write("Couldn't install {0} due to {1}".format(pkgs[i], e))
 elif 'Fedora' in platform():
+    import yum
     yb = yum.YumBase()
     inst = yb.rpmdb.returnPackages()
     installed = [x.name for x in inst]
