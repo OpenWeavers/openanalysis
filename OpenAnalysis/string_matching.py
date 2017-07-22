@@ -49,7 +49,7 @@ class StringMatchingAnalyzer:
 
     def analyze(self):
         # Analyzes the matching algorithm
-        file = open(os.path.join(os.path.abspath('../OpenAnalysis/StringMatchingSamples'), self.samples_list[randint(0, 1)]), 'r')
+        file = open(os.path.join(os.path.abspath('../OpenAnalysis/StringMatchingSamples'), self.samples_list[randint(0, 3)]), 'r')
         file_text = file.read()
         data_array = []
         print('please wait while analysing...')
