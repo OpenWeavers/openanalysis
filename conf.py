@@ -125,6 +125,9 @@ latex_elements = {
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
+    
+    # Remove blank pages in pdf
+    'classoptions': ',openany,oneside'
 }
 
 latex_logo = 'res/OpenAnalysis1080.png'
