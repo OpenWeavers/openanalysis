@@ -43,7 +43,7 @@ else:
         """
         Error...
         Unsupported OS...
-        Download and install python3-tk for your specific OS
+        Download and install python3-tk, ffmpeg and python-gi-cairo for your OS
         """)
     sys.exit(0)
 
