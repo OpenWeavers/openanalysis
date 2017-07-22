@@ -32,7 +32,7 @@ class SortingAlgorithm:
 
 
 class SortVisualizer:
-    def __init__(self, sorter) -> None:
+    def __init__(self, sorter):
         """
         Constructor for Visualizer
         :param sorter: A Sorting Algorithm Class
@@ -55,13 +55,10 @@ class SortVisualizer:
         self.scatter.set_offsets(data)
         return self.scatter,
 
-    def visualize(self, num=100, save=False):
+    def visualize(self, num=100, save_path = ""):
         """
         Visualizes given Sorting Algorithm
-        And saves it
-        To-Do:       * Save it with user defined name
-                     * Saving thread is too slow...Make it fast
-                     * When saving is in progress, animation flickers, find a solution
+        If save_path is not empty, saves it in that path
         """
         plt.title(self.sorter.name + " Visualization")
         plt.xlabel("Array Index")
@@ -73,9 +70,9 @@ class SortVisualizer:
         self.scatter = plt.scatter(np.arange(self.hist_arr.shape[1]), self.hist_arr[0])  # plt.scatter(x-array,y-array)
         self.animation = animation.FuncAnimation(self.fig, self.__update, frames=self.hist_arr.shape[0], repeat=False,
                                                  blit=False, interval=1)
-        if save:
+        if save_path != "":
             import os
-            path = os.path.join('output',self.sorter.name + ".mp4")
+            path = os.path.join(save_path,self.sorter.name + ".mp4")
             p1 = Process(
                 target=lambda: self.animation.save(path, writer=animation.FFMpegWriter(fps=100)))
             p1.start()
