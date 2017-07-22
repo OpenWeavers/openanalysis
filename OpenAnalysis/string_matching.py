@@ -36,8 +36,8 @@ class StringMatchingAnalyzer:
     """
     Class to analyze the instances of StringMatchingAlgorithm
     """
-    max_text_length = 5000
-    # max_patt_length = 3000
+    max_text_length = 10000
+    max_patt_length = 1000
     text = ''
     pattern = ''
     # The samples are tar.gz files stored in StringMatchingSamples directory of Current Working
@@ -55,8 +55,8 @@ class StringMatchingAnalyzer:
         file_text = file.read()
         data_array = []
         print('please wait while analysing...')
-        for n in range(1000, 10000, 100):
-            for m in range(100, 1000, 5):
+        for n in range(1000, self.max_text_length, 100):
+            for m in range(100, self.max_patt_length, 5):
                 pos = randint(0, len(file_text) - n)
                 text = file_text[pos:pos + n]   # Select a random text of size n
                 pos = randint(0, len(text)-m)
