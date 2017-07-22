@@ -1,4 +1,4 @@
-from OpenAnalysis.sorting import SortVisualizer,SortingAlgorithm
+from OpenAnalysis.sorting import SortVisualizer, SortingAlgorithm
 import numpy as np
 
 

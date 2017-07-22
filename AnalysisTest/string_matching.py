@@ -1,4 +1,5 @@
-from OpenAnalysis.string_matching import  StringMatchingAlgorithm, StringVisualizer
+from OpenAnalysis.string_matching import StringMatchingAlgorithm, StringMatchingAnalyzer
+import os
 
 
 class BruteForceMatch(StringMatchingAlgorithm):
@@ -30,3 +31,7 @@ class BruteForceMatch(StringMatchingAlgorithm):
             if j == len(pattern):
                 return True
         return False
+
+
+if __name__ == "__main__":
+    StringMatchingAnalyzer(BruteForceMatch()).analyze()
