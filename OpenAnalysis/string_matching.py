@@ -40,10 +40,10 @@ class StringMatchingAnalyzer:
     max_patt_length = 1000
     text = ''
     pattern = ''
-    # The samples are tar.gz files stored in StringMatchingSamples directory of Current Working
+    samples_list = os.listdir('StringMatchingSamples')
+    # The samples are text files stored in StringMatchingSamples directory of Current Working
     # Directory. You can download the sample tar.gz texts from the SMART website.
     # https://www.dmi.unict.it/~faro/smart/download/data/
-    samples_list = os.listdir('StringMatchingSamples')
 
     def __init__(self, matcher: StringMatchingAlgorithm):
         self.matcher = matcher

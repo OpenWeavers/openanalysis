@@ -1,5 +1,4 @@
 from OpenAnalysis.string_matching import StringMatchingAlgorithm, StringMatchingAnalyzer
-import os
 
 
 class BruteForceMatch(StringMatchingAlgorithm):
