@@ -3,19 +3,26 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Introduction to OpenAnalysis
-========================================
+Introduction to Analysis of Algorithms with Python
+======================================================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Language Tutorial:
+   :caption: Introduction to Python:
    :glob:
 
    Langauge/*
 
 .. toctree::
    :maxdepth: 2
-   :caption: Library Tutorial:
+   :caption: Essential Libraries:
    :glob:
 
    Libraries/*
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Exploring OpenAnalysis:
+   :glob:
+
+   OpenAnalysis/*
