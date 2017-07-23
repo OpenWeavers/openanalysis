@@ -233,4 +233,4 @@ class QuickSort(SortingAlgorithm):
                                   visualization=visualization)
 
 if __name__ == "__main__":
-    SortVisualizer(BubbleSort).visualize()
+    SortVisualizer(BubbleSort).visualize(save=True)
