@@ -1,11 +1,12 @@
 import numpy as np
 import os
 import matplotlib.pyplot as plt
+import inspect
+import OpenAnalysis
 from random import randint
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 from matplotlib.mlab import griddata
-
 
 class StringMatchingAlgorithm:
     """
@@ -38,7 +39,8 @@ class StringMatchingAnalyzer:
     max_patt_length = 1000
     text = ''
     pattern = ''
-    samples_list = os.listdir('../OpenAnalysis/StringMatchingSamples')
+    sample_path = os.path.join(os.path.dirname(inspect.getfile(OpenAnalysis)), 'StringMatchingSamples') # ../OpenAnalysis/StringMatchingSamples
+    samples_list = os.listdir(sample_path)
     # The samples are text files stored in StringMatchingSamples directory of Current Working
     # Directory. You can download the sample tar.gz texts from the SMART website.
     # https://www.dmi.unict.it/~faro/smart/download/data/

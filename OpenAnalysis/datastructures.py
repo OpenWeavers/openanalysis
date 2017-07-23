@@ -21,7 +21,7 @@ class DataStructureBase:
     Base class for implementing Data Structures
     """
 
-    def __init__(self, name: str,file_path):
+    def __init__(self, name: str, file_path):
         """
         Constructor
         :param name: Name of Data Structure. Drawing Layout is determined by the name itself
