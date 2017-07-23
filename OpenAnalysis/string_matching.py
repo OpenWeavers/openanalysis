@@ -1,8 +1,6 @@
 import numpy as np
 import os
 import matplotlib.pyplot as plt
-import inspect
-import OpenAnalysis
 from random import randint
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
@@ -32,14 +30,16 @@ class StringMatchingAlgorithm:
 
 
 class StringMatchingAnalyzer:
+
     """
     Class to analyze the instances of StringMatchingAlgorithm
     """
+    __package_directory = os.path.dirname(os.path.abspath(__file__))
     max_text_length = 10000
     max_patt_length = 1000
     text = ''
     pattern = ''
-    sample_path = os.path.join(os.path.dirname(inspect.getfile(OpenAnalysis)), 'StringMatchingSamples') # ../OpenAnalysis/StringMatchingSamples
+    sample_path = os.path.join(__package_directory, 'StringMatchingSamples') # ../OpenAnalysis/StringMatchingSamples
     samples_list = os.listdir(sample_path)
     # The samples are text files stored in StringMatchingSamples directory of Current Working
     # Directory. You can download the sample tar.gz texts from the SMART website.
@@ -47,12 +47,12 @@ class StringMatchingAnalyzer:
 
     def __init__(self, matcher):
         self.matcher = matcher()  # Instantiate
-        print(self.samples_list)
+        # print(self.samples_list)
 
     def analyze(self):
         # Analyzes the matching algorithm
         file = open(os.path.join(os.path.abspath('../OpenAnalysis/StringMatchingSamples'), self.samples_list[randint(0, 3)]), 'r')
-        file_text = file.read()
+        file_text = file.read() 
         data_array = []
         print('please wait while analysing...')
         for n in range(1000, self.max_text_length, 100):
@@ -62,7 +62,7 @@ class StringMatchingAnalyzer:
                 pos = randint(0, len(text)-m)
                 pattern = text[pos:pos+m]   # Select a random pattern of size m from text, where m<n
                 self.matcher.match(text, pattern)   # Run the string matching algorithm with T and P as parameters
-                print(self.matcher.basic_op)
+                # print(self.matcher.basic_op)
                 data_array.append((n, m, self.matcher.basic_op))
 
         dat = np.array(data_array)
