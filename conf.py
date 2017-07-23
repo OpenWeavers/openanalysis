@@ -114,7 +114,7 @@ latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     #
     'papersize': 'a4paper',
-
+	
     # The font size ('10pt', '11pt' or '12pt').
     #
     # 'pointsize': '10pt',
@@ -128,7 +128,10 @@ latex_elements = {
     # 'figure_align': 'htbp',
     
     # Remove blank pages in pdf
-    'classoptions': ',openany,oneside'
+    'classoptions': ',openany,oneside',
+	
+    # fix line wraps
+    'printindex': '\\footnotesize\\raggedright\\printindex'
 }
 
 latex_logo = 'res/logo256.png'
