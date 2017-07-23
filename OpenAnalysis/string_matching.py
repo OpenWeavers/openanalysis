@@ -6,13 +6,14 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 from matplotlib.mlab import griddata
 
+
 class StringMatchingAlgorithm:
     """
     Base class for all (Comparision Based) String Matching Algorithms
     """
     def __init__(self, name):
         self.name = name
-        self.basic_op = 0
+        self.basic_op = 0   # Number of basic operations
         self.s_count = 0  # Number of Successful comparison
         self.count = 0  # Total Number of comparision
         self.dat = np.array([])
@@ -30,7 +31,6 @@ class StringMatchingAlgorithm:
 
 
 class StringMatchingAnalyzer:
-
     """
     Class to analyze the instances of StringMatchingAlgorithm
     """
@@ -39,7 +39,7 @@ class StringMatchingAnalyzer:
     max_patt_length = 1000
     text = ''
     pattern = ''
-    sample_path = os.path.join(__package_directory, 'StringMatchingSamples') # ../OpenAnalysis/StringMatchingSamples
+    sample_path = os.path.join(__package_directory, 'StringMatchingSamples')    # ../OpenAnalysis/StringMatchingSamples
     samples_list = os.listdir(sample_path)
     # The samples are text files stored in StringMatchingSamples directory of Current Working
     # Directory. You can download the sample tar.gz texts from the SMART website.
@@ -51,7 +51,7 @@ class StringMatchingAnalyzer:
 
     def analyze(self):
         # Analyzes the matching algorithm
-        file = open(os.path.join(os.path.abspath('../OpenAnalysis/StringMatchingSamples'), self.samples_list[randint(0, 3)]), 'r')
+        file = open(os.path.join(self.sample_path, self.samples_list[randint(0, 3)]), 'r')
         file_text = file.read() 
         data_array = []
         print('please wait while analysing...')

@@ -5,7 +5,6 @@ class BruteForceMatch(StringMatchingAlgorithm):
     """
     Class to implement Brute Force String Matching Algorithm
     """
-
     def __init__(self):
         StringMatchingAlgorithm.__init__(self, "Brute Force String Matching")
 
