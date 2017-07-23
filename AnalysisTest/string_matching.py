@@ -62,4 +62,4 @@ class Horspool(StringMatchingAlgorithm):
 
 
 if __name__ == "__main__":
-    StringMatchingAnalyzer(BruteForceMatch()).analyze()
+    StringMatchingAnalyzer(BruteForceMatch).analyze()
