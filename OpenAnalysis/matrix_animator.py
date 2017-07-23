@@ -133,7 +133,7 @@ class MatrixAnimator:
             if i == 0:
                 adj = matrix[0]
             result = matrix[0]
-        print(adj, result)
+        # print(adj, result)
         cmap = plt.get_cmap('jet')
         cmap.set_bad('white', 1.)
         vmin = 0
