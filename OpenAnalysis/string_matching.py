@@ -10,7 +10,7 @@ from matplotlib.mlab import griddata
 
 class StringMatchingAlgorithm:
     """
-    Base class for all (Comparision Bases) String Matching Algorithms
+    Base class for all (Comparision Based) String Matching Algorithms
     """
     def __init__(self, name):
         self.name = name
@@ -45,8 +45,8 @@ class StringMatchingAnalyzer:
     # Directory. You can download the sample tar.gz texts from the SMART website.
     # https://www.dmi.unict.it/~faro/smart/download/data/
 
-    def __init__(self, matcher: StringMatchingAlgorithm):
-        self.matcher = matcher
+    def __init__(self, matcher):
+        self.matcher = matcher()  # Instantiate
         print(self.samples_list)
 
     def analyze(self):
