@@ -131,11 +131,14 @@ latex_elements = {
     'classoptions': ',openany,oneside',
 	
     # fix line wraps
-    'preamble': '\\usepackage[draft]{minted}\\fvset{breaklines=true}'
+    'preamble': '\\usepackage[draft]{minted}\\fvset{breaklines=true}',
+    
+    # fixing image dpi
+    'pixunit' : '0.01in'
 }
 
 # Trying to fix  image dpi
-latex_preamble = r"""\pdfimageresolution135"""
+# latex_preamble = r"""\pdfimageresolution135"""
 
 latex_logo = 'res/logo256.png'
 
