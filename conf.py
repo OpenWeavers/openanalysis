@@ -33,7 +33,8 @@
 extensions = ['nbsphinx',
               'sphinx.ext.autodoc',
               'sphinx.ext.imgmath',
-	      'sphinx.ext.githubpages'
+	      'sphinx.ext.githubpages',
+	      'sphinx.ext.imgconverter'
              ]
 
 # Add any paths that contain templates here, relative to this directory.
