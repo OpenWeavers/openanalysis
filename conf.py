@@ -131,12 +131,12 @@ latex_elements = {
     'classoptions': ',openany,oneside',
 	
     # fix line wraps and DPI
-    'preamble': r"""\usepackage[draft]{minted}\fvset{breaklines=true}
- \pdfpxdimen=\dimexpr 1in/3\relax
-"""
+    'preamble': r"""\usepackage[draft]{minted}\fvset{breaklines=true}"""
 }
 
-latex_logo = 'res/logo256.png'
+latex_logo = 'res/logo512.png'
+
+latex_show_urls = 'footnote'
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
