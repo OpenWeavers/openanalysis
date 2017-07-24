@@ -138,7 +138,9 @@ latex_elements = {
 }
 
 # Trying to fix  image dpi
-# latex_preamble = r"""\pdfimageresolution135"""
+latex_preamble = r"""\pdfpxdimen=1in % 1 DPI
+\divide\pdfpxdimen by 96 % 96 DPI
+"""
 
 latex_logo = 'res/logo256.png'
 
