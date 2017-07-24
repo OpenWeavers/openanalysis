@@ -79,4 +79,5 @@ setup(
             'ipython',
         ],
     },
+    data_files=[(os.path.join('openanalysis', 'string_matching_samples'), [os.path.join('openanalysis', 'string_matching_samples', x) for x in os.listdir(os.path.join('openanalysis', 'string_matching_samples'))])]
 )
