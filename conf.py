@@ -134,7 +134,7 @@ latex_elements = {
     'preamble': '\\usepackage[draft]{minted}\\fvset{breaklines=true}',
     
     # fixing image dpi
-    'pixunit' : '0.01in'
+    'pixunit' : '0.001n'
 }
 
 # Trying to fix  image dpi
