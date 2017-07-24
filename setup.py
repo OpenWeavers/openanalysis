@@ -1,4 +1,4 @@
-# Setup for OpenAnalysis
+# Setup for openanalysis
 import os
 from setuptools import setup
 import sys
@@ -58,8 +58,8 @@ setup(
     license="GPLv3+",
     keywords="OpenWeavers product",
     url="https://github.com/OpenWeavers/OpenAlgorithm",
-    packages=['OpenAnalysis',
-              'AnalysisTest',
+    packages=['openanalysis',
+              'analysistest',
     ],
     classifiers=[
         "Development Status :: 3 - Alpha",

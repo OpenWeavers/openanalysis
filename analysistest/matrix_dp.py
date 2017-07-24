@@ -1,4 +1,4 @@
-from OpenAnalysis.matrix_animator import MatrixAnimator
+from openanalysis.matrix_animator import MatrixAnimator
 import networkx as nx
 import numpy as np
 

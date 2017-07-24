@@ -9,7 +9,7 @@ from matplotlib.mlab import griddata
 
 class StringMatchingAlgorithm:
     """
-    Base class for all (Comparision Based) String Matching Algorithms
+    Base class for all (Comparision Based) String Matching algorithms
     """
     def __init__(self, name):
         self.name = name
@@ -39,7 +39,7 @@ class StringMatchingAnalyzer:
     max_patt_length = 1000
     text = ''
     pattern = ''
-    sample_path = os.path.join(__package_directory, 'StringMatchingSamples')    # ../OpenAnalysis/StringMatchingSamples
+    sample_path = os.path.join(__package_directory, 'StringMatchingSamples')    # ../openanalysis/StringMatchingSamples
     samples_list = os.listdir(sample_path)
     # The samples are text files stored in StringMatchingSamples directory of Current Working
     # Directory. You can download the sample tar.gz texts from the SMART website.
@@ -79,7 +79,7 @@ class StringMatchingAnalyzer:
         ax.set_xlabel('length of text')
         ax.set_ylabel('length of pattern')
         ax.set_zlabel('number of basic operations performed')
-        ax.set_title('%s Analysis' % self.matcher.name)
+        ax.set_title('{0} Analysis'.format(self.matcher.name))
         ax.set_zlim3d(np.min(Z), np.max(Z))
         fig.colorbar(surf)
         plt.tight_layout()

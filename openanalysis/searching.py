@@ -4,7 +4,7 @@ import numpy as np
 
 class SearchingAlgorithm:
     """
-    Base class for all Searching Algorithms
+    Base class for all Searching algorithms
     """
 
     def __init__(self, name: str):
@@ -87,8 +87,8 @@ class SearchVisualizer:
     @staticmethod
     def compare(algorithms):
         """
-         Compares the given list of Searching Algorithms and Plots a bar chart
-         :param algorithms: List of Searching Algorithms
+         Compares the given list of Searching algorithms and Plots a bar chart
+         :param algorithms: List of Searching algorithms
          """
         arr = np.arange(2000)
         key = np.random.randint(0, 2000)

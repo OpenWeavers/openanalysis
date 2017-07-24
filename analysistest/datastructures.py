@@ -1,4 +1,4 @@
-from OpenAnalysis.datastructures import DataStructureVisualization,DataStructureBase
+from openanalysis.datastructures import DataStructureVisualization, DataStructureBase
 
 
 class BinarySearchTree(DataStructureBase):
@@ -16,7 +16,7 @@ class BinarySearchTree(DataStructureBase):
             return str(self.data)
 
     def __init__(self):
-        DataStructureBase.__init__(self, "Binary Search Tree","t.png")
+        DataStructureBase.__init__(self, "Binary Search Tree", "t.png")
         self.root = None
         self.count = 0
 
@@ -87,7 +87,7 @@ class BinaryHeap(DataStructureBase):
     """
 
     def __init__(self):
-        DataStructureBase.__init__(self, "Binary Heap","sa.png")
+        DataStructureBase.__init__(self, "Binary Heap", "sa.png")
         self.count = 0
         self.elements = [None]
 

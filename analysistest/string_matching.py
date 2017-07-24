@@ -1,4 +1,4 @@
-from OpenAnalysis.string_matching import StringMatchingAlgorithm, StringMatchingAnalyzer
+from openanalysis.string_matching import StringMatchingAlgorithm, StringMatchingAnalyzer
 
 
 class BruteForceMatch(StringMatchingAlgorithm):

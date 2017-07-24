@@ -1,4 +1,4 @@
-from OpenAnalysis.searching import SearchingAlgorithm,SearchVisualizer
+from openanalysis.searching import SearchingAlgorithm, SearchVisualizer
 
 
 class LinearSearch(SearchingAlgorithm):

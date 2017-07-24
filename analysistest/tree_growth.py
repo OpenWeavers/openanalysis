@@ -1,5 +1,5 @@
-from OpenAnalysis.base_data_structures import UnionFind,PriorityQueue
-import OpenAnalysis.tree_growth as TreeGrowth
+from openanalysis.base_data_structures import UnionFind, PriorityQueue
+import openanalysis.tree_growth as TreeGrowth
 
 
 def kruskal_mst(G):

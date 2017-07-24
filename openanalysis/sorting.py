@@ -132,8 +132,8 @@ class SortVisualizer:
     @staticmethod
     def compare(algorithms):
         """
-        Compares the given list of Sorting Algorithms and Plots a bar chart
-        :param algorithms: List of Sorting Algorithms
+        Compares the given list of Sorting algorithms and Plots a bar chart
+        :param algorithms: List of Sorting algorithms
         """
         base_arr = np.arange(2000)
         np.random.shuffle(base_arr)

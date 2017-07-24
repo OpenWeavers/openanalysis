@@ -51,21 +51,21 @@ class Heap:
 if __name__ == '__main__':
 
     try:
-        print "Enter number of elements in the heap"
-        n = int(raw_input())
-        print "Enter elements one by one"
-        a = map(str, raw_input().split())
+        print("Enter number of elements in the heap")
+        n = int(input())
+        print("Enter elements one by one")
+        a = map(str, input().split())
         h = Heap(a, True)
-        print "Heap is"
+        print("Heap is")
         for i in range(1, len(a)+1):
-            print h.elements[i],
-        print "\n"
-        print "Sorted elements are:"
+            print(h.elements[i])
+        print("\n")
+        print("Sorted elements are:")
         for i in range(0, n):
-            print h.remove(),
+            print(h.remove())
 
     except Exception as e:
-        print e
+        print(e)
 
     finally:
-        print "\nGoodBye!"
+        print("\nGoodBye!")
