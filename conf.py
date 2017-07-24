@@ -131,7 +131,7 @@ latex_elements = {
     'classoptions': ',openany,oneside',
 	
     # fix line wraps
-    'printindex': '\\footnotesize\\raggedright\\printindex'
+    'preamble': '\\usepackage[draft]{minted}\\fvset{breaklines=true}'
 }
 
 latex_logo = 'res/logo256.png'
