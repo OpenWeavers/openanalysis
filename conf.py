@@ -132,8 +132,8 @@ latex_elements = {
 	
     # fix line wraps and DPI
     'preamble': r"""\usepackage[draft]{minted}\fvset{breaklines=true}
-    \pdfpxdimen=1in % 1 DPI
-\divide\pdfpxdimen by 96 % 96 DPI"""
+ \pdfpxdimen=\dimexpr 1in/3\relax
+"""
 }
 
 latex_logo = 'res/logo256.png'
