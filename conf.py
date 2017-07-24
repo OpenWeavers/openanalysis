@@ -109,6 +109,7 @@ htmlhelp_basename = 'OpenAnalysisdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
+latex_engine = 'xelatex'
 
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
@@ -118,11 +119,21 @@ latex_elements = {
     # The font size ('10pt', '11pt' or '12pt').
     #
     # 'pointsize': '10pt',
-
+    'fontpkg': r'''
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}
+''',
     # Additional stuff for the LaTeX preamble.
     #
     # 'preamble': '',
-
+    'preamble': r"""\usepackage[titles]{tocloft}
+\cftsetpnumwidth {1.25cm}\cftsetrmarg{1.5cm}
+\setlength{\cftchapnumwidth}{0.75cm}
+\setlength{\cftsecindent}{\cftchapnumwidth}
+\setlength{\cftsecnumwidth}{1.25cm}
+\usepackage[draft]{minted}\fvset{breaklines=true}"""
+	
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
@@ -130,8 +141,6 @@ latex_elements = {
     # Remove blank pages in pdf
     'classoptions': ',openany,oneside',
 	
-    # fix line wraps and DPI
-    'preamble': r"""\usepackage[draft]{minted}\fvset{breaklines=true}"""
 }
 
 latex_logo = 'res/logo512.png'
