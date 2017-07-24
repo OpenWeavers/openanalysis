@@ -17,13 +17,13 @@ if 'Ubuntu' in platform() or 'Debian' in platform():
     for pkg in pkgs:
         cpkg = cache[pkg]
         if cpkg.is_installed:
-            print("{0} aleady installed".format(pkg))
+            print("{0} already installed".format(pkg))
         else:
             cpkg.mark_install()
         try:
             cache.commit()
-        except Exception, e:
-            sys.stderr.write("Couldn't install {0} due to {1}".format(pkgs[i], e))
+        except Exception as e:
+            sys.stderr.write("Couldn't install {0} due to {1}".format(pkgs, e))
 elif 'Fedora' in platform():
     import yum
     yb = yum.YumBase()
@@ -35,7 +35,7 @@ elif 'Fedora' in platform():
         else:
             print("Installing {0}".format(pkg))
             kwarg = {
-                'name':pkg
+                'name': pkg
             }
             yb.install(**kwarg)
             yb.resolveDeps()
@@ -51,13 +51,13 @@ else:
     sys.exit(0)
 
 setup(
-    name="OpenAnalysis",
+    name="openanalysis",
     version="0.0.3",
     author="OpenWeavers",
     description="An open source package to analyse and visualise algorithms and data structures",
     license="GPLv3+",
     keywords="OpenWeavers product",
-    url="http://openalgorithm.readthedocs.io",
+    url="https://github.com/OpenWeavers/OpenAlgorithm",
     packages=['OpenAnalysis',
               'AnalysisTest',
     ],

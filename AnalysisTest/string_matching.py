@@ -59,6 +59,5 @@ class Horspool(StringMatchingAlgorithm):
                 i += len(self.pattern)
         return -1
 
-
 if __name__ == "__main__":
     StringMatchingAnalyzer(BruteForceMatch).analyze()
