@@ -132,7 +132,8 @@ latex_elements = {
 \setlength{\cftchapnumwidth}{0.75cm}
 \setlength{\cftsecindent}{\cftchapnumwidth}
 \setlength{\cftsecnumwidth}{1.25cm}
-\usepackage[draft]{minted}\fvset{breaklines=true}""",
+\usepackage[draft]{minted}\fvset{breaklines=true}
+\pdfcompresslevel0""",
 	
     # Latex figure (float) alignment
     #
