@@ -134,6 +134,9 @@ latex_elements = {
     'preamble': '\\usepackage[draft]{minted}\\fvset{breaklines=true}'
 }
 
+# Trying to fix  image dpi
+latex_preamble = r"""\pdfimageresolution135"""
+
 latex_logo = 'res/logo256.png'
 
 # Grouping the document tree into LaTeX files. List of tuples
