@@ -137,12 +137,12 @@ latex_elements = {
     # 'figure_align': 'htbp',
     
     # Remove blank pages in pdf
-    'classoptions': ',openany,oneside',
+    # 'classoptions': ',openany,oneside',
     'fncychap': r'\usepackage[Bjornstrup]{fncychap}',
     'printindex': r'\footnotesize\raggedright\printindex'
 }
 
-latex_logo = 'res/logo512.png'
+latex_logo = 'res/logo32.png'
 
 latex_show_urls = 'footnote'
 
