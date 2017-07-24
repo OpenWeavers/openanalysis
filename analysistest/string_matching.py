@@ -21,11 +21,9 @@ class BruteForceMatch(StringMatchingAlgorithm):
         StringMatchingAlgorithm.match(self, text, pattern)
         for i in range(0, len(text) - len(pattern)):
             j = 0
-            self.count += 1
             while j < len(pattern) and pattern[j] == text[i + j]:
-                self.s_count += 1
                 j += 1
-            self.basic_op += self.s_count
+                self.count += 1
             if j == len(pattern):
                 return True
         return False
@@ -50,7 +48,7 @@ class Horspool(StringMatchingAlgorithm):
             j = 0
             while j < len(self.pattern) and text[i-j] == self.pattern[len(self.pattern)-1-j]:
                 j += 1
-            self.basic_op += j
+            self.count += j
             if j == len(self.pattern):
                 return i-len(self.pattern)+1
             if text[i] in self.shift_table:

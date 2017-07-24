@@ -13,9 +13,7 @@ class StringMatchingAlgorithm:
     """
     def __init__(self, name):
         self.name = name
-        self.basic_op = 0   # Number of basic operations
-        self.s_count = 0  # Number of Successful comparison
-        self.count = 0  # Total Number of comparision
+        self.count = 0  # Number of basic comparison
         self.dat = np.array([])
 
     def match(self, text: str, pattern: str):
@@ -26,7 +24,7 @@ class StringMatchingAlgorithm:
         :return: True if pattern in text else False
         Do the exact matching in Derived Classes by calling this function first
         """
-        self.s_count, self.count, self.basic_op = 0, 0, 0
+        self.count = 0
         pass
 
 
@@ -39,9 +37,9 @@ class StringMatchingAnalyzer:
     max_patt_length = 1000
     text = ''
     pattern = ''
-    sample_path = os.path.join(__package_directory, 'StringMatchingSamples')    # ../openanalysis/StringMatchingSamples
+    sample_path = os.path.join(__package_directory, 'string_matching_samples')    # ../openanalysis/string_matching_samples
     samples_list = os.listdir(sample_path)
-    # The samples are text files stored in StringMatchingSamples directory of Current Working
+    # The samples are text files stored in string_matching_samples directory of Current Working
     # Directory. You can download the sample tar.gz texts from the SMART website.
     # https://www.dmi.unict.it/~faro/smart/download/data/
 
@@ -62,8 +60,8 @@ class StringMatchingAnalyzer:
                 pos = randint(0, len(text)-m)
                 pattern = text[pos:pos+m]   # Select a random pattern of size m from text, where m<n
                 self.matcher.match(text, pattern)   # Run the string matching algorithm with T and P as parameters
-                # print(self.matcher.basic_op)
-                data_array.append((n, m, self.matcher.basic_op))
+                # print(self.matcher.count)
+                data_array.append((n, m, self.matcher.count))
 
         dat = np.array(data_array)
         fig = plt.figure()
@@ -82,5 +80,4 @@ class StringMatchingAnalyzer:
         ax.set_title('{0} Analysis'.format(self.matcher.name))
         ax.set_zlim3d(np.min(Z), np.max(Z))
         fig.colorbar(surf)
-        plt.tight_layout()
         plt.show()
