@@ -130,17 +130,11 @@ latex_elements = {
     # Remove blank pages in pdf
     'classoptions': ',openany,oneside',
 	
-    # fix line wraps
-    'preamble': '\\usepackage[draft]{minted}\\fvset{breaklines=true}',
-    
-    # fixing image dpi
-    'pixunit' : '0.001n'
+    # fix line wraps and DPI
+    'preamble': r"""\usepackage[draft]{minted}\fvset{breaklines=true}
+    \pdfpxdimen=1in % 1 DPI
+\divide\pdfpxdimen by 96 % 96 DPI"""
 }
-
-# Trying to fix  image dpi
-latex_preamble = r"""\pdfpxdimen=1in % 1 DPI
-\divide\pdfpxdimen by 96 % 96 DPI
-"""
 
 latex_logo = 'res/logo256.png'
 
