@@ -59,6 +59,7 @@ setup(
     keywords="OpenWeavers product",
     url="https://github.com/OpenWeavers/OpenAlgorithm",
     packages=['openanalysis',
+              'analysistest',
     ],
     classifiers=[
         "Development Status :: 3 - Alpha",
