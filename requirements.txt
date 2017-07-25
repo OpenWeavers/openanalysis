@@ -6,3 +6,4 @@ nbconvert
 matplotlib
 networkx
 numpy
+pygraphviz
