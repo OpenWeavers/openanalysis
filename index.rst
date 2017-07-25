@@ -7,11 +7,11 @@ Introduction to Analysis of Algorithms with Python
 ======================================================
 .. raw:: latex
 
-   \part{Introduction to Python}
+   \part{The Python Language}
    
 .. toctree::
    :maxdepth: 2
-   :caption: Introduction to Python
+   :caption: The Python Language
    :glob:
 
    Langauge/*
@@ -29,11 +29,11 @@ Introduction to Analysis of Algorithms with Python
 
 .. raw:: latex
 
-   \part{Exploring OpenAnalysis}
+   \part{Exploring openanalysis}
    
 .. toctree::
    :maxdepth: 2
-   :caption: Exploring OpenAnalysis
+   :caption: Exploring openanalysis
    :glob:
 
    OpenAnalysis/*
