@@ -130,6 +130,10 @@ latex_elements = {
 \setlength{\cftsecindent}{\cftchapnumwidth}
 \setlength{\cftsecnumwidth}{1.25cm}
 \usepackage[draft]{minted}\fvset{breaklines=true}
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}
 """,
 	
     # Latex figure (float) alignment
