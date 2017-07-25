@@ -131,6 +131,7 @@ latex_elements = {
 \setlength{\cftsecindent}{\cftchapnumwidth}
 \setlength{\cftsecnumwidth}{1.25cm}
 \usepackage[draft]{minted}\fvset{breaklines=true}
+\addto\captionsenglish{\renewcommand{\contentsname}{Table of contents}}'
 """,
 	
     # Latex figure (float) alignment
