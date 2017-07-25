@@ -130,7 +130,7 @@ latex_elements = {
 \setlength{\cftsecindent}{\cftchapnumwidth}
 \setlength{\cftsecnumwidth}{1.25cm}
 \usepackage[draft]{minted}\fvset{breaklines=true}
-\usepackage{fontpkg}
+%\usepackage{fontpkg}
 \setmainfont{DejaVu Serif}
 \setsansfont{DejaVu Sans}
 \setmonofont{DejaVu Sans Mono}
