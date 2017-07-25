@@ -33,7 +33,7 @@ Introduction to Analysis of Algorithms with Python
    
 .. toctree::
    :maxdepth: 2
-   :caption: Exploring openanalysis
+   :caption: Exploring `openanalysis`
    :glob:
 
    OpenAnalysis/*
