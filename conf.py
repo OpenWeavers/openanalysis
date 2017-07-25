@@ -144,9 +144,9 @@ latex_elements = {
     'printindex': r'\footnotesize\raggedright\printindex'
 }
 
-# nbsphinx_execute = 'always'
+nbsphinx_execute = 'always'
 
-nbsphinx_execute_arguments = ['--InlineBackend.figure_formats={"png", "pdf"}']
+nbsphinx_execute_arguments = ['--InlineBackend.figure_formats={"svg", "pdf"}']
 
 nbsphinx_allow_errors = True
 
