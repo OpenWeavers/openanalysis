@@ -1,4 +1,5 @@
 sphinx > 1.6
 nbsphinx 
 IPython
+jupyter
 jupyter_client
