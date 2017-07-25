@@ -68,5 +68,5 @@ WARNING
 
 Package %(pkg) not found...
 Please install
-""" %{"pkg", pkg})
+""" %{"pkg": pkg})
 		
