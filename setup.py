@@ -66,7 +66,7 @@ for pkg in pkg_dict:
 WARNING
 -------
 
-Package %(pkg) not found...
+Package {0} not found...
 Please install
-""" %{"pkg": pkg})
+""".format(pkg))
 		
