@@ -29,11 +29,11 @@ Introduction to Analysis of Algorithms with Python
 
 .. raw:: latex
 
-   \part{Exploring `openanalysis`}
+   \part{Exploring openanalysis}
    
 .. toctree::
    :maxdepth: 2
-   :caption: Exploring `openanalysis`
+   :caption: Exploring openanalysis
    :glob:
 
    OpenAnalysis/*
