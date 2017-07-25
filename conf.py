@@ -117,23 +117,20 @@ latex_elements = {
     # The font size ('10pt', '11pt' or '12pt').
     #
     # 'pointsize': '10pt',
-#    'fontpkg': r'''\setmainfont{DejaVu Serif}
-# \setsansfont{DejaVu Sans}
-# \setmonofont{DejaVu Sans Mono}
-# ''',
+    'fontpkg': r'''\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}
+''',
     # Additional stuff for the LaTeX preamble.
     #
     # 'preamble': '',
-    'preamble': r"""\usepackage[titles]{tocloft}
+    'preamble': r"""\documentclass{book}
+\usepackage[titles]{tocloft}
 \cftsetpnumwidth {1.25cm}\cftsetrmarg{1.5cm}
 \setlength{\cftchapnumwidth}{0.75cm}
 \setlength{\cftsecindent}{\cftchapnumwidth}
 \setlength{\cftsecnumwidth}{1.25cm}
 \usepackage[draft]{minted}\fvset{breaklines=true}
-%\usepackage{fontpkg}
-\setmainfont{DejaVu Serif}
-\setsansfont{DejaVu Sans}
-\setmonofont{DejaVu Sans Mono}
 """,
 	
     # Latex figure (float) alignment
