@@ -148,7 +148,7 @@ nbsphinx_execute = 'always'
 
 nbsphinx_execute_arguments = ['--InlineBackend.figure_formats={"png", "pdf"}']
 
-
+nbsphinx_allow_errors = True
 
 latex_logo = 'res/logo32.png'
 
