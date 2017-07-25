@@ -21,7 +21,8 @@ pkg_avail = {pkg:True for pkg in pkg_dict}
 
 for pkg in pkg_dict:
     try:
-        subprocess.Popen(pkg_dict[pkg], stdout=subprocess.DEVNULL)
+        P = subprocess.Popen(pkg_dict[pkg], stdout=subprocess.DEVNULL)
+	subprocess.Popen.kill(p)
     except FileNotFoundError:
         pkg_avail[pkg] = False  
 
