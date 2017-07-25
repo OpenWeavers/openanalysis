@@ -126,14 +126,13 @@ latex_elements = {
     # Additional stuff for the LaTeX preamble.
     #
     # 'preamble': '',
-    'preamble': r"""\usepackage{svg}
-\usepackage[titles]{tocloft}
+    'preamble': r"""\usepackage[titles]{tocloft}
 \cftsetpnumwidth {1.25cm}\cftsetrmarg{1.5cm}
 \setlength{\cftchapnumwidth}{0.75cm}
 \setlength{\cftsecindent}{\cftchapnumwidth}
 \setlength{\cftsecnumwidth}{1.25cm}
 \usepackage[draft]{minted}\fvset{breaklines=true}
-\pdfcompresslevel0""",
+""",
 	
     # Latex figure (float) alignment
     #
