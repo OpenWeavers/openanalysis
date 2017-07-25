@@ -6,15 +6,8 @@ import subprocess
 
 
 def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
-
-
-def get_path(path=None):
-    if path is not None:
-        return os.path.join('openanalysis', 'string_matching_samples', path)
-    else:
-        return os.path.join('openanalysis', 'string_matching_samples')
-
+    with open(os.path.join(os.path.dirname(__file__), fname)) as f:
+	return f.read()
 
 pkg_dict = {
     "ffmpeg": "ffmpeg",
@@ -32,7 +25,7 @@ for pkg in pkg_dict:
 
 setup(
     name="OpenAnalysis",
-    version="0.0.5",
+    version="0.0.8",
     author="OpenWeavers1",
     author_email="srmonish96@gmail.com",
     description="An open source package to analyse and visualise algorithms and data structures",
@@ -60,7 +53,7 @@ setup(
             'ipython',
         ],
     },
-    data_files=[(get_path(), [get_path(x) for x in os.listdir(get_path())])],
+    include_package_data=True,
 )
 
 for pkg in pkg_dict:
