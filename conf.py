@@ -109,8 +109,6 @@ htmlhelp_basename = 'OpenAnalysisdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
-latex_engine = 'lualatex'
-
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     #
