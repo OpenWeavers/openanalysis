@@ -5,24 +5,35 @@
 
 Introduction to Analysis of Algorithms with Python
 ======================================================
+.. raw:: latex
 
+   \part{Introduction to Python}
+   
 .. toctree::
    :maxdepth: 2
-   :caption: Introduction to Python:
+   :caption: Introduction to Python
    :glob:
 
    Langauge/*
 
+.. raw:: latex
+
+   \part{Essential Libraries}
+   
 .. toctree::
    :maxdepth: 2
-   :caption: Essential Libraries:
+   :caption: Essential Libraries
    :glob:
 
    Libraries/*
 
+.. raw:: latex
+
+   \part{Exploring OpenAnalysis}
+   
 .. toctree::
    :maxdepth: 2
-   :caption: Exploring OpenAnalysis:
+   :caption: Exploring OpenAnalysis
    :glob:
 
    OpenAnalysis/*
