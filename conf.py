@@ -33,8 +33,7 @@
 extensions = ['nbsphinx',
               'sphinx.ext.autodoc',
               'sphinx.ext.imgmath',
-	      'sphinx.ext.githubpages',
-	      'sphinx.ext.imgconverter'
+	      'sphinx.ext.githubpages'
              ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -118,8 +117,7 @@ latex_elements = {
     # The font size ('10pt', '11pt' or '12pt').
     #
     # 'pointsize': '10pt',
-    'fontpkg': r'''
-\setmainfont{DejaVu Serif}
+    'fontpkg': r'''\setmainfont{DejaVu Serif}
 \setsansfont{DejaVu Sans}
 \setmonofont{DejaVu Sans Mono}
 ''',
