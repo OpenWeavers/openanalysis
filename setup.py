@@ -10,9 +10,9 @@ def read(fname):
 
 def get_path(path=None):
     if path != None:
-        return(os.path.join('openanalysis', 'string_matching_samples', path))
+        return os.path.join('openanalysis', 'string_matching_samples', path)
     else:
-        return(os.path.join('openanalysis', 'string_matching_samples'))
+        return os.path.join('openanalysis', 'string_matching_samples')
 
 pkg_dict = {
     "ffmpeg": "ffmpeg", 
