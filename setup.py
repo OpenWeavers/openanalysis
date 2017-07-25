@@ -29,7 +29,6 @@ setup(
     name="OpenAnalysis",
     version="0.0.5",
     author="OpenWeavers1",
-    author_email="srmonish96@gmail.com",
     description="An open source package to analyse and visualise algorithms and data structures",
     license="GPLv3+",
     keywords="OpenWeavers product",
