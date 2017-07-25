@@ -3,3 +3,6 @@ nbsphinx
 IPython
 jupyter
 nbconvert
+matplotlib
+networkx
+numpy
