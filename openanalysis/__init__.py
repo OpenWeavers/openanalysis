@@ -72,3 +72,4 @@ if len(to_be_installd) == 0 and platform_check != 0:
             
     except Exception as e:
         sys.stderr.write("Couldn't install {0} due to {1}".format(pkg, e))
+        sys.exit(1)
