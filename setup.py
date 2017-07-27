@@ -7,7 +7,8 @@ import subprocess
 
 def read(fname):
     with open(os.path.join(os.path.dirname(__file__), fname)) as f:
-	return f.read()
+        return f.read()
+
 
 pkg_dict = {
     "ffmpeg": "ffmpeg",
@@ -18,7 +19,8 @@ pkg_avail = {pkg: True for pkg in pkg_dict}
 
 for pkg in pkg_dict:
     try:
-        test_process = subprocess.Popen(pkg_dict[pkg], stdout=subprocess.DEVNULL)
+        test_process = subprocess.Popen(pkg_dict[pkg], stdout=subprocess.DEVNULL,
+                                        stderr=subprocess.DEVNULL)
         subprocess.Popen.kill(test_process)
     except FileNotFoundError:
         pkg_avail[pkg] = False
@@ -45,7 +47,7 @@ setup(
         'networkx',
         'numpy',
         'matplotlib',
-        'pygraphviz',
+        'pygraphviz', 'progressbar2',
     ],
     extras_require={
         "extensions": [
