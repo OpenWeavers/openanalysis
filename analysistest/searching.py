@@ -1,4 +1,4 @@
-from openanalysis.searching import SearchingAlgorithm, SearchVisualizer
+from openanalysis.searching import SearchingAlgorithm, SearchAnalyzer
 
 
 class LinearSearch(SearchingAlgorithm):
@@ -18,7 +18,7 @@ class BinarySearch(SearchingAlgorithm):
     def __init__(self):
         SearchingAlgorithm.__init__(self, "Binary Search")
 
-    def search(self, arr, key) -> bool:
+    def search(self, arr, key):
         SearchingAlgorithm.search(self, arr, key)
         SearchingAlgorithm.search(self, arr, key)
         low, high = 0, arr.size - 1
@@ -34,4 +34,4 @@ class BinarySearch(SearchingAlgorithm):
         return False
 
 if __name__ == "__main__":
-    SearchVisualizer(BinarySearch).analyze(maxpts=10000)
+    SearchAnalyzer(BinarySearch).analyze(maxpts=200000)

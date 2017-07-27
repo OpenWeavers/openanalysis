@@ -1,4 +1,4 @@
-from openanalysis.sorting import SortVisualizer, SortingAlgorithm
+from openanalysis.sorting import SortAnalyzer, SortingAlgorithm
 import numpy as np
 
 
@@ -233,4 +233,4 @@ class QuickSort(SortingAlgorithm):
                                   visualization=visualization)
 
 if __name__ == "__main__":
-    SortVisualizer(BubbleSort).visualize(save=True)
+    SortAnalyzer(MergeSort).analyze(maxpts=2000,progress=False)
