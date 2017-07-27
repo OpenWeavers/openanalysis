@@ -4,6 +4,8 @@ import matplotlib.animation as animation
 from multiprocessing import Process
 import numpy as np
 
+__all__ = ['SortAnalyzer', 'SortingAlgorithm']
+
 
 class SortingAlgorithm:
     """
@@ -31,8 +33,8 @@ class SortingAlgorithm:
         # Do sorting in derived classes
 
 
-class SortVisualizer:
-    def __init__(self, sorter) -> None:
+class SortAnalyzer:
+    def __init__(self, sorter):
         """
         Constructor for Visualizer
         :param sorter: A Sorting Algorithm Class
@@ -75,13 +77,13 @@ class SortVisualizer:
                                                  blit=False, interval=1)
         if save:
             import os
-            path = os.path.join('output',self.sorter.name + ".mp4")
+            path = os.path.join('output', self.sorter.name + ".mp4")
             p1 = Process(
                 target=lambda: self.animation.save(path, writer=animation.FFMpegWriter(fps=100)))
             p1.start()
         plt.show()
 
-    def efficiency(self, maxpts=1000):
+    def analyze(self, maxpts=1000, progress=True):
         """
         Plots the running time of sorting algorithm
         Checks for 3 cases, Already Sorted array, reverse sorted array and Shuffled array
@@ -89,69 +91,79 @@ class SortVisualizer:
         from 100, and varying upto maxpts in the steps of 100, and counting the number of
         basic operations
         :param maxpts: Upper bound on elements chosen for analysing efficiency
+        :param progress: Boolean indicating whether to show progress bar or not
         """
         # x is list of input sizes
         # y_1 running time in case of Sorted Array
         # y_2 running time in case of Shuffled Array
         # y_3 running time in case of Reverse Sorted Array
-        x, y_1, y_2, y_3 = np.array([0]), np.array([0]), np.array([0]), np.array([0])
+        x, y = np.array([0]), [np.array([0]), np.array([0]), np.array([0])]
+        labels = ['Sorted Array', 'Shuffled Array', 'Reverse Sorted Array']
+        print('Please wait while analyzing {} Algorithm'.format(self.sorter.name))
+        if progress:
+            import progressbar
+            count = 0
+            max_count = (maxpts - 100) // 100
+            bar = progressbar.ProgressBar(max_value=max_count)
         for n in range(100, maxpts, 100):
             # Vary n from 100 to max in steps of 100
-            i_1 = np.arange(n)  # array of items from 1 to n
-            self.sorter.sort(i_1, False)
-            val_sorted = self.sorter.count
-            i_2 = i_1[::-1]  # reverse the array
-            ran.shuffle(i_1)  # shuffle the array
-            self.sorter.sort(i_1, False)
-            val_normal = self.sorter.count
-            self.sorter.sort(i_2, False)
-            val_reverse = self.sorter.count
-            x = np.vstack((x, [n]))  # add n to list x
-            y_1 = np.vstack((y_1, [val_sorted]))  # add number of basic operations to y lists
-            y_2 = np.vstack((y_2, [val_normal]))
-            y_3 = np.vstack((y_3, [val_reverse]))
+            if progress:
+                count += 1
+                bar.update(count)
+            data = np.arange(n)
+            input_data = [np.array(data), data[::-1]]
+            np.random.shuffle(data)
+            input_data.append(data)
+            for i in range(3):
+                self.sorter.sort(input_data[i], False)
+                y[i] = np.vstack((y[i], [self.sorter.count]))
+            x = np.vstack((x, [n]))
         plt.suptitle(self.sorter.name + " Analysis")
-        plt.subplot(2, 2, 1)
-        plt.title("Sorted Array")
-        plt.xlabel("No. of Elements")
-        plt.ylabel("No. of Basic Operations")
-        plt.scatter(x, y_1)
-        plt.subplot(2, 2, 2)
-        plt.title("Randomly Shuffled Array")
-        plt.xlabel("No. of Elements")
-        plt.ylabel("No. of Basic Operations")
-        plt.scatter(x, y_2)
-        plt.subplot(2, 2, 3)
-        plt.title("Reverse Sorted Array")
-        plt.xlabel("No. of Elements")
-        plt.ylabel("No. of Basic Operations")
-        plt.scatter(x, y_3)
+        for i in range(3):
+            plt.subplot(2, 2, i + 1)
+            plt.title(labels[i])
+            plt.xlabel("No. of Elements")
+            plt.ylabel("No. of Basic Operations")
+            plt.scatter(x, y[i])
         plt.tight_layout(pad=2)
         plt.show()
 
     @staticmethod
-    def compare(algorithms):
+    def compare(algorithms, pts=2000, maxrun=5, progress=True):
         """
-        Compares the given list of Sorting algorithms and Plots a bar chart
+        Compares the given list of Sorting algorithms over  and Plots a bar chart
         :param algorithms: List of Sorting algorithms
+        :param pts: Number of elements in testing array
+        :param maxrun: Number of iterations to take average
+        :param progress: Whether to show Progress bar or not
         """
-        base_arr = np.arange(2000)
+        base_arr = np.arange(pts)
         np.random.shuffle(base_arr)
-        arr = np.copy(base_arr)
-        operations = []
-        algorithms = [x() for x in algorithms] # Instantiate
-        for algorithm in algorithms:
-            algorithm.sort(arr)
-            operations.append((algorithm.name,algorithm.count))
-            arr = np.copy(base_arr)
-        operations = sorted(operations,key=lambda x:x[0])
-        rects = plt.bar(left=np.arange(len(operations)),height=[y for (x,y) in operations])
-        plt.xticks(np.arange(len(operations)),[x for (x,y) in operations])
+        algorithms = [x() for x in algorithms]  # Instantiate
+        operations = {x.name: 0 for x in algorithms}
+        print('Please wait while comparing Sorting Algorithms')
+        if progress:
+            import progressbar
+            count = 0
+            max_count = maxrun * len(algorithms)
+            bar = progressbar.ProgressBar(max_value=max_count)
+        for _ in range(maxrun):
+            for algorithm in algorithms:
+                if progress:
+                    count += 1
+                    bar.update(count)
+                algorithm.sort(base_arr)
+                operations[algorithm.name] += algorithm.count
+                np.random.shuffle(base_arr)
+        operations = [(k, v / maxrun) for k, v in operations.items()]
+        plt.suptitle('Sorting Algorithm Comparision\nAveraged over {} loops'.format(maxrun))
+        rects = plt.bar(left=np.arange(len(operations)), height=[y for (x, y) in operations])
+        plt.xticks(np.arange(len(operations)), [x for (x, y) in operations])
         ax = plt.axes()
         for rect in rects:
             height = rect.get_height()
             ax.text(rect.get_x() + rect.get_width() / 2., 1.05 * height,
                     '%d' % int(height),
                     ha='center', va='bottom')
+        plt.ylabel('Average number of basic operations')
         plt.show()
-

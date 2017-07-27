@@ -1,6 +1,8 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
+__all__ = ['apply_to_graph', 'tree_growth_visualizer']
+
 
 def tree_growth_visualizer(fun):
     """

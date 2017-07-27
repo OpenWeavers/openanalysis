@@ -1,3 +1,6 @@
+__all__ = ['UnionFind', 'PriorityQueue']
+
+
 class UnionFind:
     """Union-find data structure.
 
@@ -66,13 +69,14 @@ class UnionFind:
 
 class PriorityQueue:
     """
-    A simple Priority Queue Implementation for usage in algorithms
+    A simple Priority Queue Implementation for usage in algorithms.
     Internally uses heapq to maintain min-heap and tasks are added
     as tuples (priority,task) to queue. To make the order of tasks
     with same priority clear, count of element insertion is added
     to the tuple, making it as (priority,count,task), which means
     that tasks are first ordered by priority then by count
     """
+
     def __init__(self):
         """
         Create an empty Priority Queue
@@ -123,3 +127,4 @@ class PriorityQueue:
         """
         self.remove(task)
         self.add_task(task, new_priority)
+

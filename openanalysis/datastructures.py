@@ -1,3 +1,5 @@
+import warnings
+
 import networkx as nx
 import matplotlib.pyplot as plt
 import gi
@@ -28,6 +30,7 @@ class DataStructureBase:
         :param file_path: Path to store output of DS
         If the name contains 'tree', then layout is tree layout, else Graph
         """
+        warnings.warn('This module is deprecated ... Wait till v2.0')
         self.name = name
         self.is_tree = "TREE" in name.upper() or "HEAP" in name.upper()
         self.layout = self.__binary_tree_layout if self.is_tree else self.__hierarchy_pos

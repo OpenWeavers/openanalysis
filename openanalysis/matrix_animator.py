@@ -4,9 +4,23 @@ import matplotlib.animation as animation
 import matplotlib.patches as patches
 import numpy as np
 
+__all__ = ['MatrixAnimator']
+
 
 class MatrixAnimator:
+    "Class for animating Dynamic Programming based graph algorithms"
+
     def __init__(self, fn, G, pos=None, weights=True, labels=True, matrix_lables=True, node_size=300):
+        """
+        Initializes Matrix animator instance
+        :param fn: A function taking graph as input, and yields Matrix,(i,j,k) tuple
+        :param G: Graph to be analyzed
+        :param pos: Position to draw graph. If None, graphviz layout is used
+        :param weights: Weather to draw edge labels
+        :param labels: Weather to draw node labels
+        :param matrix_lables: Weather to draw matrix values
+        :param node_size: Determines size of node
+        """
         self.fig, (self.ax1, self.ax2, self.ax3) = plt.subplots(1, 3, figsize=(16, 9))
         self.fig.suptitle(fn.__name__ + ' algorithm')
         self.ax1.set_title("Graph G")
@@ -28,7 +42,7 @@ class MatrixAnimator:
         self.node_size = node_size
 
     @staticmethod
-    def plot_matrix_labels(matrix, axis):
+    def __plot_matrix_labels(matrix, axis):
         labels = []
         n, m = matrix.shape
         for i in range(n):
@@ -37,7 +51,7 @@ class MatrixAnimator:
                 labels.append(t)
         return labels
 
-    def update(self, i):
+    def __update(self, i):
         # global img,fun
         if self.matrix_labels:
             l = np.transpose(self.frames[i]).flatten().astype(str)
@@ -50,7 +64,7 @@ class MatrixAnimator:
         self.active_cells[2].set_xy((i - 0.5, j - 0.5))
         return self.img, self.lables, self.active_cells
 
-    def init_animation(self):
+    def __init_animation(self):
         masked_array = np.ma.array(self.frames[0], mask=np.isinf(self.frames[0]))
         vmin = 0
         vmax = np.max(np.ma.array(self.frames[-1], mask=np.isinf(self.frames[-1])))
@@ -62,7 +76,7 @@ class MatrixAnimator:
         cax = div.append_axes('right', '5%', '5%')
         self.img = self.ax3.imshow(masked_array, interpolation='nearest', vmin=vmin, vmax=vmax, alpha=0.7)
         if self.matrix_labels:
-            self.lables = self.plot_matrix_labels(self.frames[0], self.ax3)
+            self.lables = self.__plot_matrix_labels(self.frames[0], self.ax3)
         else:
             self.lables = []
         self.fig.colorbar(self.img, cax=cax)
@@ -101,10 +115,10 @@ class MatrixAnimator:
         masked_array = np.ma.array(self.frames[0], mask=np.isinf(self.frames[0]))
         self.ax2.imshow(masked_array, interpolation='nearest', vmin=vmin, vmax=vmax, alpha=0.7)
         if self.matrix_labels:
-            self.plot_matrix_labels(self.frames[0], self.ax2)
+            self.__plot_matrix_labels(self.frames[0], self.ax2)
         # Now start the animation
-        x = animation.FuncAnimation(self.fig, self.update, interval=1000, blit=False,
-                                    repeat=False, init_func=self.init_animation, frames=len(self.frames))
+        x = animation.FuncAnimation(self.fig, self.__update, interval=1000, blit=False,
+                                    repeat=False, init_func=self.__init_animation, frames=len(self.frames))
         if save:
             Writer = animation.writers['ffmpeg']
             writer = Writer(fps=1, metadata=dict(artist='V'), bitrate=1800)
@@ -145,13 +159,13 @@ class MatrixAnimator:
         masked_array = np.ma.array(adj, mask=np.isinf(adj))
         self.ax2.imshow(masked_array, interpolation='nearest', cmap=cmap, vmin=vmin, vmax=vmax)
         if self.matrix_labels:
-            self.plot_matrix_labels(adj, self.ax2)
+            self.__plot_matrix_labels(adj, self.ax2)
         # Now draw the final matrix
         masked_array = np.ma.array(result, mask=np.isinf(result))
         div = make_axes_locatable(self.ax3)
         cax = div.append_axes('right', '5%', '5%')
         if self.matrix_labels:
-            self.plot_matrix_labels(result, self.ax3)
+            self.__plot_matrix_labels(result, self.ax3)
         self.img = self.ax3.imshow(masked_array, interpolation='nearest', cmap=cmap, vmin=vmin, vmax=vmax)
         self.fig.colorbar(self.img, cax=cax)
         plt.show()
