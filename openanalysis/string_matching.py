@@ -25,7 +25,6 @@ class StringMatchingAlgorithm:
         :param text: Source Text
         :param pattern: String to be matched
         :return: True if pattern in text else False
-        Do the exact matching in Derived Classes by calling this function first
         """
         self.count = 0
         pass
