@@ -93,6 +93,8 @@ class SortAnalyzer:
         Analysis is done  by inputting randomly shuffled integer arrays with size staring
         from 100, and varying upto maxpts in the steps of 100, and counting the number of
         basic operations
+        
+        
         :param maxpts: Upper bound on elements chosen for analysing efficiency
         :param progress: Boolean indicating whether to show progress bar or not
         """
