@@ -80,6 +80,15 @@ class SortAnalyzer:
                                                  blit=False, interval=1)
         if save:
             import os
+            import errno
+            path = "output"
+            try:
+                os.makedirs(path)
+            except OSError as exc:
+                if exc.errno == errno.EEXIST and os.path.isdir(path):
+                    pass
+                else:
+                    raise
             path = os.path.join('output', self.sorter.name + ".mp4")
             p1 = Process(
                 target=lambda: self.animation.save(path, writer=animation.FFMpegWriter(fps=100)))

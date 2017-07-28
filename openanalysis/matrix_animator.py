@@ -126,6 +126,16 @@ class MatrixAnimator:
         x = animation.FuncAnimation(self.fig, self.__update, interval=1000, blit=False,
                                     repeat=False, init_func=self.__init_animation, frames=len(self.frames))
         if save:
+            import errno
+            import os
+            path = "output"
+            try:
+                os.makedirs(path)
+            except OSError as exc:
+                if exc.errno == errno.EEXIST and os.path.isdir(path):
+                    pass
+                else:
+                    raise
             Writer = animation.writers['ffmpeg']
             writer = Writer(fps=1, metadata=dict(artist='V'), bitrate=1800)
             from multiprocessing import Process
