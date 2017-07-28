@@ -55,7 +55,8 @@ setup(
         'networkx',
         'numpy',
         'matplotlib',
-        'pygraphviz', 'progressbar2',
+        'pygraphviz', 
+        'progressbar2',
     ],
     extras_require={
         "extensions": [
