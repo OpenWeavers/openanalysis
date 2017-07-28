@@ -30,11 +30,17 @@
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
+
+import sys
+import os
+
+sys.path.insert(0, os.path.abspath('../Python/'))
+
 extensions = ['nbsphinx',
               'sphinx.ext.autodoc',
               'sphinx.ext.imgmath',
-	      'sphinx.ext.githubpages'
-             ]
+              'sphinx.ext.githubpages'
+              ]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -72,7 +78,7 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store','.ipynb_checkpoints']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '.ipynb_checkpoints']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -80,7 +86,7 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
 
-
+autodoc_mock_imports = ['matplotlib', 'networkx', 'gi', 'numpy', 'mpl_toolkits']
 # -- Options for HTML output ----------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -101,19 +107,17 @@ applehelp_icon = 'res/logo16.png'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'OpenAnalysisdoc'
-
 
 # -- Options for LaTeX output ---------------------------------------------
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     #
     'papersize': 'a4paper',
-	
+
     # The font size ('10pt', '11pt' or '12pt').
     #
     # 'pointsize': '10pt',
@@ -135,11 +139,11 @@ latex_elements = {
 \usepackage[draft]{minted}\fvset{breaklines=true}
 \addto\captionsenglish{\renewcommand{\contentsname}{Table of contents}}'
 """,
-	
+
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
-    
+
     # Remove blank pages in pdf
     'classoptions': ',openany,oneside',
     'fncychap': r'\usepackage[Bjornstrup]{fncychap}',
@@ -164,7 +168,6 @@ latex_documents = [
      u'OpenWeavers', 'manual'),
 ]
 
-
 # -- Options for manual page output ---------------------------------------
 
 # One entry per manual page. List of tuples
@@ -173,7 +176,6 @@ man_pages = [
     (master_doc, 'openanalysis', u'openanalysis Documentation',
      [author], 1)
 ]
-
 
 # -- Options for Texinfo output -------------------------------------------
 
@@ -185,6 +187,3 @@ texinfo_documents = [
      author, 'openanalysis', 'One line description of project.',
      'Miscellaneous'),
 ]
-
-
-

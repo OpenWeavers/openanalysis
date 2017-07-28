@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Introduction to Analysis of Algorithms with Python
-======================================================
+==================================================
 .. raw:: latex
 
    \part{The Python Language}
@@ -37,3 +37,14 @@ Introduction to Analysis of Algorithms with Python
    :glob:
 
    OpenAnalysis/*
+
+.. raw:: latex
+
+   \part{API Referance}
+   
+.. toctree::
+   :caption: API Reference
+   :glob:
+
+   Reference/openanalysis
+
