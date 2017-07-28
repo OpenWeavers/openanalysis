@@ -99,7 +99,7 @@ autodoc_mock_imports = ['matplotlib', 'networkx', 'gi', 'numpy', 'mpl_toolkits']
 # documentation.
 #
 # html_theme_options = {}
-html_logo = 'res/logo256.png'
+html_logo = 'res/logo192.png'
 html_favicon = 'res/icon.ico'
 applehelp_icon = 'res/logo16.png'
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -156,7 +156,7 @@ latex_elements = {
 
 # nbsphinx_allow_errors = True
 
-latex_logo = 'res/logo32.png'
+latex_logo = 'res/logo192.png'
 
 latex_show_urls = 'footnote'
 
