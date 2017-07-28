@@ -9,17 +9,19 @@ class SearchingAlgorithm:
     Base class for all Searching algorithms
     """
 
-    def __init__(self, name: str):
+    def __init__(self, name):
         """
         Constructor
+
         :param name: Name of Searching algorithm being implemented
         """
         self.count = 0
         self.name = name
 
-    def search(self, arr: np.ndarray, key):
+    def search(self, arr, key):
         """
         The core search method
+
         :param arr: numpy array, in witch the search is performed
         :param key: the element to be searched
         :return: True if key in arr else False
@@ -47,7 +49,8 @@ class SearchAnalyzer:
         Plots the running time of sorting algorithm
         Checks for 3 cases, Already Sorted array, reverse sorted array and Shuffled array
         Analysis is done  by inputting integer arrays with size staring from 100, and varying
-        upto maxpts in the steps of 100, and counting the number of basic operations
+        upto :parm maxpts: in the steps of 100, and counting the number of basic operations
+
         :param maxpts: Maximum number of element in the array, using witch analysis is done
         :param progress: Boolean indicating whether to show the progress bar or not
         """
@@ -88,7 +91,8 @@ class SearchAnalyzer:
     @staticmethod
     def compare(algorithms, pts=2000, maxrun=5, progress=True):
         """
-         Compares the given list of Searching algorithms and Plots a bar chart
+        Compares the given list of Searching algorithms and Plots a bar chart
+
         :param algorithms: List of Searching algorithms
         :param pts: Number of elements in testing array
         :param maxrun: Number of iterations to take average

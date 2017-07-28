@@ -19,7 +19,7 @@ class StringMatchingAlgorithm:
         self.count = 0  # Number of basic comparison
         self.dat = np.array([])
 
-    def match(self, text: str, pattern: str):
+    def match(self, text, pattern):
         """
         The core matching function
         :param text: Source Text
@@ -32,15 +32,9 @@ class StringMatchingAlgorithm:
 
 
 class StringMatchingAnalyzer:
-    """
-    Class to analyze the instances of StringMatchingAlgorithm
-    """
     __package_directory = os.path.dirname(os.path.abspath(__file__))
-    text = ''
-    pattern = ''
-    sample_path = os.path.join(__package_directory,
-                               'string_matching_samples')  # openanalysis/string_matching_samples
-    samples_list = os.listdir(sample_path)
+    __sample_path = os.path.join(__package_directory, 'string_matching_samples')  # openanalysis/string_matching_samples
+    __samples_list = os.listdir(__sample_path)
     __min_text_length = 5000
     __min_patt_length = 500
 
@@ -58,11 +52,11 @@ class StringMatchingAnalyzer:
     def analyze(self, max_text_length=10000, max_patt_length=1000, progress=True, input_file_path=None):
         """
         Analyzes given algorithm by varying both text and pattern length and plots it in 3D space
+
         :param max_text_length: Maximum length of text used in analysis. Should be greater than 5000
         :param max_patt_length: Maximum length of pattern used in analysis. Should be greater than 500
         :param progress: If True, Progress bar is shown
-        :param input_file_path: Path to the sample file. Must be larger than 5000 char length.
-                If None, analysis is done with in-built sample
+        :param input_file_path: Path to the sample file. Must be larger than 5000 char length. If None, analysis is done with in-built sample
         :return: 3D plot of running time vs text and pattern length
         """
         # Analyzes the matching algorithm
@@ -74,7 +68,8 @@ class StringMatchingAnalyzer:
             raise ValueError(
                 'Pattern length {} is incompatible with Text Length {}'.format(max_patt_length, max_text_length))
         if input_file_path is None:
-            input_file_path = os.path.join(self.sample_path, self.samples_list[randrange(0, len(self.samples_list))])
+            input_file_path = os.path.join(self.__sample_path,
+                                           self.__samples_list[randrange(0, len(self.__samples_list))])
         file = open(input_file_path, 'r')
         file_text = file.read()
         if max_text_length > len(file_text):
@@ -121,21 +116,20 @@ class StringMatchingAnalyzer:
     def compare(algorithms, n=1000, m=500, maxrun=5, progress=True, input_file_path=None):
         """
         Compares the string matching algorithms
+
         :param algorithms: List of String Matching Algorithm classes
         :param n: Text length to be used for comparision
         :param m: Pattern Length to be used for comparision
         :param maxrun: Number of times the test has to be performed. Warns if it is greater than 5
-        :param progress: Boolean indicating whether to show Progress bar during comparision, True by
-        default
-        :param input_file_path: The path of custom file to be used for analysis. If not given, default
-        file is selected from in-built file
+        :param progress: Boolean indicating whether to show Progress bar during comparision, True by default
+        :param input_file_path: The path of custom file to be used for analysis. If not given, default file is selected from in-built file
         :return: Bar charts showing the average of basic operations performed
         """
         algorithms = [x() for x in algorithms]
         if input_file_path is None:
-            input_file_path = os.path.join(StringMatchingAnalyzer.sample_path,
-                                           StringMatchingAnalyzer.samples_list[
-                                               randrange(0, len(StringMatchingAnalyzer.samples_list))])
+            input_file_path = os.path.join(StringMatchingAnalyzer.__sample_path,
+                                           StringMatchingAnalyzer.__samples_list[
+                                               randrange(0, len(StringMatchingAnalyzer.__samples_list))])
         file = open(input_file_path, 'r')
         file_text = file.read()
         if n > len(file_text):

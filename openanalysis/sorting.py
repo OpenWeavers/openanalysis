@@ -12,7 +12,7 @@ class SortingAlgorithm:
     Base class for all sorting algorithms
     """
 
-    def __init__(self, name: str):
+    def __init__(self, name):
         """
         :param name: Name of the Sorting algorithm
         """
@@ -20,9 +20,11 @@ class SortingAlgorithm:
         self.hist_array = None  # 2D array to save instances of original array for each swap
         self.count = 0  # Number of basic operations performed by the algorithm
 
-    def sort(self, array: np.ndarray, visualization: bool):
+    def sort(self, array, visualization):
         """
         The Sorting algorithm must call this before proceeding
+        It sets the count to 0, and initializes the history array
+
         :param array: 1D numpy array which has to be sorted
         :param visualization: If True, saves instances of array after each swap
         """
@@ -37,6 +39,7 @@ class SortAnalyzer:
     def __init__(self, sorter):
         """
         Constructor for Visualizer
+
         :param sorter: A Sorting Algorithm Class
         """
         self.hist_arr, self.scatter, self.animation = None, None, None
@@ -48,6 +51,7 @@ class SortAnalyzer:
         """
         Update function for animation
         Sets new array state for scatter plot
+
         :param i: Sent by the animator indicating the frame number
         :return: Modified scatter plot
         """
@@ -60,10 +64,9 @@ class SortAnalyzer:
     def visualize(self, num=100, save=False):
         """
         Visualizes given Sorting Algorithm
-        And saves it
-        To-Do:       * Save it with user defined name
-                     * Saving thread is too slow...Make it fast
-                     * When saving is in progress, animation flickers, find a solution
+
+        :param num: Number of points that has to be chosen for visualization
+        :param save: Boolean indicating weather to save animation in output/ directory
         """
         plt.title(self.sorter.name + " Visualization")
         plt.xlabel("Array Index")
@@ -132,6 +135,7 @@ class SortAnalyzer:
     def compare(algorithms, pts=2000, maxrun=5, progress=True):
         """
         Compares the given list of Sorting algorithms over  and Plots a bar chart
+
         :param algorithms: List of Sorting algorithms
         :param pts: Number of elements in testing array
         :param maxrun: Number of iterations to take average

@@ -124,4 +124,4 @@ class BoyerMoore(StringMatchingAlgorithm):
 
 
 if __name__ == "__main__":
-    StringMatchingAnalyzer(BoyerMoore).analyze()
+    StringMatchingAnalyzer(Horspool).analyze(max_text_length=5000)

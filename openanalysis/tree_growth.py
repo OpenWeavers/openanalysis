@@ -1,14 +1,17 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+from networkx.drawing.nx_agraph import graphviz_layout
 
 __all__ = ['apply_to_graph', 'tree_growth_visualizer']
 
 
 def tree_growth_visualizer(fun):
     """
-    Visualizer function for Graph algorithms yielding the edges
+    Visualizer function for Graph algorithms iterating the edges of graph forming a Tree
+    Visualizes given function by inputting a Random Geometric Graph as an input
+
     :param fun: A function which has the signature f(G) and returns iterator of edges of graph G
-    :return: Saves the images of growth step in given directory. ffmpeg can be used to make video
+    :return: Saves the animation of tree growth in output/ directory
     """
     G = nx.random_geometric_graph(100, .125)
     # position is stored as node attribute data for random_geometric_graph
@@ -72,15 +75,25 @@ def tree_growth_visualizer(fun):
     os.system('rm output/*png')
 
 
-def apply_to_graph(fun):
+def apply_to_graph(fun, G = None):
     """
-    Visualizer function for Graph algorithms yielding the edges
+    Applies given algorithm to random geometric graph and displays the results side by side
+
     :param fun: A function which has the signature f(G) and returns iterator of edges of graph G
+    :param G: a networkx Graph. If None, random geometric graph is created and applied
     :return: Plot showing G and fun(G)
     """
-    G = nx.random_geometric_graph(100, .125)
-    # position is stored as node attribute data for random_geometric_graph
-    pos = nx.get_node_attributes(G, 'pos')
+    if G is None:
+        G = nx.random_geometric_graph(100, .125)
+        # position is stored as node attribute data for random_geometric_graph
+        pos = nx.get_node_attributes(G, 'pos')
+        nodesize = 80
+        for u, v in G.edges():
+            G.edge[u][v]['weight'] = ((G.node[v]['pos'][0] - G.node[u]['pos'][0]) ** 2 +
+                                      (G.node[v]['pos'][1] - G.node[u]['pos'][1]) ** 2) ** .5
+    else:
+        pos = graphviz_layout(G)
+        nodesize = 200
     # find node near center (0.5,0.5)
     color = {}
     dmin = 1
@@ -92,9 +105,7 @@ def apply_to_graph(fun):
         if d < dmin:
             ncenter = n
             dmin = d
-    for u, v in G.edges():
-        G.edge[u][v]['weight'] = ((G.node[v]['pos'][0] - G.node[u]['pos'][0]) ** 2 +
-                                  (G.node[v]['pos'][1] - G.node[u]['pos'][1]) ** 2) ** .5
+
     res = nx.Graph(list(fun(G)))
     plt.figure(figsize=(10, 8))
     plt.suptitle(fun.__name__ + " algorithm application")
@@ -103,21 +114,25 @@ def apply_to_graph(fun):
     nx.draw_networkx_edges(G, pos, nodelist=[ncenter], alpha=0.4)
     nx.draw_networkx_nodes(G, pos,
                            nodelist=color.keys(),
-                           node_size=80,
+                           node_size=nodesize,
                            node_color=list(color.values()),
                            cmap=plt.get_cmap("Reds_r")
                            ).set_edgecolor('k')
-    plt.xlim(-0.05, 1.05)
-    plt.ylim(-0.05, 1.05)
+    if G is not None:
+        nx.draw_networkx_labels(G,pos)
+        nx.draw_networkx_edge_labels(G,pos,
+                                     edge_labels=nx.get_edge_attributes(G,'weight'))
     plt.axis('off')
     plt.subplot(1, 2, 2)
     plt.title("Resultant Graph, R = {0}(G)".format(fun.__name__))
     nx.draw_networkx_edges(res, pos, nodelist=[ncenter], alpha=0.4)
     nx.draw_networkx_nodes(res, pos,
                            node_color=list(color[n] for n in res.nodes()),
-                           node_size=80,
+                           node_size=nodesize,
                            cmap=plt.get_cmap("Greens_r")).set_edgecolor('k')
-    plt.xlim(-0.05, 1.05)
-    plt.ylim(-0.05, 1.05)
+    if G is not None:
+        nx.draw_networkx_labels(res,pos)
+        nx.draw_networkx_edge_labels(res, pos,
+                                     edge_labels=nx.get_edge_attributes(res, 'weight'))
     plt.axis('off')
     plt.show()

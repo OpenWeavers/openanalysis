@@ -12,7 +12,7 @@ def kruskal_mst(G):
     subtrees = UnionFind()
     for u, v, w in edge_list:
         if subtrees[u] != subtrees[v]:
-            yield (u, v, {'weight': w})
+            yield (u, v, w)
             subtrees.union(u, v)
 
 
@@ -132,4 +132,18 @@ def dijkstra(G, source=None):
 
 
 if __name__ == "__main__":
-    TreeGrowth.tree_growth_visualizer(dijkstra)
+    import networkx as nx
+    import numpy as np
+    M = nx.from_numpy_matrix(
+        np.matrix(
+            [[0, 1, 0, 0, 1, 0],
+             [1, 0, 1, 0, 1, 0],
+             [0, 1, 0, 1, 0, 0],
+             [0, 0, 1, 0, 1, 1],
+             [1, 1, 0, 1, 0, 0],
+             [0, 0, 0, 1, 0, 0]]
+        ))
+    import random
+    for u, v in M.edges():
+        M.edge[u][v]['weight'] = random.randint(1, 10)
+    TreeGrowth.apply_to_graph(prim,M)

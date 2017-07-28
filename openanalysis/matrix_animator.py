@@ -13,6 +13,7 @@ class MatrixAnimator:
     def __init__(self, fn, G, pos=None, weights=True, labels=True, matrix_lables=True, node_size=300):
         """
         Initializes Matrix animator instance
+
         :param fn: A function taking graph as input, and yields Matrix,(i,j,k) tuple
         :param G: Graph to be analyzed
         :param pos: Position to draw graph. If None, graphviz layout is used
@@ -92,6 +93,11 @@ class MatrixAnimator:
         return self.lables + [self.img]
 
     def animate(self, save=False):
+        """
+        Animates the Given algorithm with given Graph
+
+        :param save: Boolean indicating weather output has to be written into output/
+        """
         result = self.fn(self.graph)
         for matrix, active in result:
             self.frames.append(matrix)
@@ -129,6 +135,11 @@ class MatrixAnimator:
         plt.show()
 
     def apply_to_graph(self, show_graph=True):
+        """
+        Applies the given algorithm to given graph and displays it
+
+        :param show_graph: Weather to show the graph in final result or not
+        """
         # Draw the original matrix
         if show_graph:
             if self.pos is None:
