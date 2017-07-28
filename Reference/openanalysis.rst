@@ -1,8 +1,6 @@
 `openanalysis` package
 ======================
 
-Submodules
-----------
 
 .. toctree::
 
