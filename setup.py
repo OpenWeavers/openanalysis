@@ -12,7 +12,8 @@ This package can be run only by python>=(3, 5)
 Replace python=={} by python>=(3, 5)
 """.format(sys.version_info[:2]))
     sys.exit(1)
-    
+
+
 def read(fname):
     with open(os.path.join(os.path.dirname(__file__), fname)) as f:
         return f.read()
@@ -55,7 +56,7 @@ setup(
         'networkx',
         'numpy',
         'matplotlib',
-        'pygraphviz', 
+        'pygraphviz',
         'progressbar2',
     ],
     extras_require={
