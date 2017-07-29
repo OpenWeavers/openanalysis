@@ -46,5 +46,4 @@ Introduction to Analysis of Algorithms with Python
    :caption: API Reference
    :glob:
 
-   Reference/openanalysis
-
+   Reference/*
