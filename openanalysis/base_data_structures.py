@@ -17,11 +17,6 @@ class UnionFind:
       into a single larger set.  If any item is not yet part of a set
       in X, it is added to X as one of the members of the merged set.
 
-      Union-find data structure. Based on Josiah Carlson's code,
-      http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/215912
-      with significant additional changes by D. Eppstein.
-      http://www.ics.uci.edu/~eppstein/PADS/UnionFind.py
-
     """
 
     def __init__(self):
@@ -66,6 +61,12 @@ class UnionFind:
                 self.weights[heaviest] += self.weights[r]
                 self.parents[r] = heaviest
 
+    '''
+    Union-find data structure. Based on Josiah Carlson’s code,
+    http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/215912
+    with significant additional changes by D. Eppstein.
+    http://www.ics.uci.edu/~eppstein/PADS/UnionFind.py
+    '''
 
 class PriorityQueue:
     """
@@ -88,6 +89,7 @@ class PriorityQueue:
     def add_task(self, task, priority):
         """
         Add a task to priority queue
+
         :param task: task to be added to queue
         :param priority: priority of the task, must be orderable
         """
@@ -97,6 +99,7 @@ class PriorityQueue:
     def remove_min(self):
         """
         Removes the minimum element of heap
+
         :return: task with less priority
         """
         import heapq
@@ -105,10 +108,10 @@ class PriorityQueue:
     def remove(self, task):
         """
         Removes the tasks from Queue
-        :param task: task to removed from the Queue
-
         Currently it takes O(n) time to find , and O(log n) to remove, making it O(n)
         further improvements can be done
+
+        :param task: task to removed from the Queue
         """
         import heapq
         for task_pair in self.heap:
@@ -119,11 +122,11 @@ class PriorityQueue:
     def update_task(self, task, new_priority):
         """
         Updates the priority of exsisting task in Queue
-        :param task: task to be updated
-        :param new_priority: new value of priority
-
         Updation is implemented as deletion and insertion, takes O(n) time
         further improvements can be done
+
+        :param task: task to be updated
+        :param new_priority: new value of priority
         """
         self.remove(task)
         self.add_task(task, new_priority)
