@@ -91,6 +91,37 @@ class MergeSort(SortingAlgorithm):
             self.hist_array = np.vstack([self.hist_array, array])
 
 
+class MergeSortRecursive(SortingAlgorithm):
+    def __init__(self):
+        SortingAlgorithm.__init__(self, "Merge Sort")
+
+    def sort(self, array, visualization=False):
+        SortingAlgorithm.sort(self, array, visualization)
+        self.visualization = visualization
+        self.split(array, 0, array.size-1)
+
+    def split(self, array, low, high):
+        if low < high:
+            mid = (low + high) // 2
+            self.split(array, low, mid)
+            self.split(array, mid+1, high)
+            self.merge(array, low, mid, high)
+
+    def merge(self, array, low, mid, high):
+        p, q = low, mid+1
+        while p <= mid and q <= high:
+            self.count += 1
+            if array[p] <= array[q]:
+                p += 1
+            else:
+                tmp = array[q]
+                array[p + 1: q + 1] = array[p:q]
+                array[p] = tmp
+                p, mid, q = p + 1, mid + 1, q + 1
+            if self.visualization:
+                self.hist_array = np.vstack([self.hist_array, array])
+
+
 class HeapSort(SortingAlgorithm):
     def __init__(self):
         SortingAlgorithm.__init__(self, "Heapsort")
