@@ -1,5 +1,7 @@
 import os
 
+
+__all__ = ["base_data_structures", "datastructures.py", "matrix_animator", "searching", "sorting", "string_matching", "tree_growth"]
 pkgs = []
 
 if not os.path.exists("check_file"):
