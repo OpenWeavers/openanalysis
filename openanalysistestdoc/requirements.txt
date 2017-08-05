@@ -1,0 +1,9 @@
+sphinx > 1.6
+nbsphinx 
+IPython
+jupyter
+nbconvert
+matplotlib
+networkx
+numpy
+pygraphviz
