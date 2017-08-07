@@ -132,18 +132,4 @@ def dijkstra(G, source=None):
 
 
 if __name__ == "__main__":
-    import networkx as nx
-    import numpy as np
-    M = nx.from_numpy_matrix(
-        np.matrix(
-            [[0, 1, 0, 0, 1, 0],
-             [1, 0, 1, 0, 1, 0],
-             [0, 1, 0, 1, 0, 0],
-             [0, 0, 1, 0, 1, 1],
-             [1, 1, 0, 1, 0, 0],
-             [0, 0, 0, 1, 0, 0]]
-        ))
-    import random
-    for u, v in M.edges():
-        M.edge[u][v]['weight'] = random.randint(1, 10)
-    TreeGrowth.apply_to_graph(prim,M)
+    TreeGrowth.tree_growth_visualizer(bfs)

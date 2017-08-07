@@ -264,4 +264,4 @@ class QuickSort(SortingAlgorithm):
                                   visualization=visualization)
 
 if __name__ == "__main__":
-    SortAnalyzer(MergeSort).analyze(maxpts=2000,progress=False)
+    SortAnalyzer(MergeSort).visualize(save=True)
