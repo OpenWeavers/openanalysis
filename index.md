@@ -1,0 +1,2 @@
+# `openanalysis`
+In our daily life, we encounter many algorithms. Knowingly or Unknowingly, algorithms make our life easier. Analysis of algorithms is a special field of interest in Computer Science. Analysis evaluates the algorithm, and leads to invention of faster algorithms. Visualization leads to the better understanding of how algorithms work. The package OpenAnalysis is inteded as a tool for analyzing and visualizing algorithms.
