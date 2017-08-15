@@ -7,6 +7,9 @@ __all__ = ['SearchAnalyzer', 'SearchingAlgorithm']
 class SearchingAlgorithm:
     """
     Base class for all Searching algorithms
+     
+    Remember to increment 'self.count' inside your algorithmic implementation every 
+    time the control enters the inner-most loop to obtain correct visualization
     """
 
     def __init__(self, name):
