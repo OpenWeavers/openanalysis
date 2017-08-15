@@ -11,8 +11,9 @@ class SortingAlgorithm:
     """
     Base class for all sorting algorithms
     
-    Remember to increment 'self.count' inside your algorithmic implementation every 
-    time the control enters the inner-most loop to obtain correct visualization
+    Increment the number of basic comparisions, 'self.count' in the inner-most 
+    loop of your algorithmic implementation every time the control enters the 
+    loop to obtain correct visualization
     """
 
     def __init__(self, name):
