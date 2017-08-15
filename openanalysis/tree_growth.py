@@ -67,12 +67,25 @@ def tree_growth_visualizer(fun):
     plt.axis('off')
     plt.savefig(os.path.join("output", 'fig%04d.png' % i))
     # Now call ffmpeg to convert images to video
-    os.system(
-        'ffmpeg -y -r 2 -i output/fig%04d.png \
-         -c:v libx264 -vf "format=yuv420p" \
-          output/{0}.mp4'.format(fun.__name__)
-    )
-    os.system('rm output/*png')
+    # Check for POSIX OS
+    if os.name == 'posix':
+        os.system(
+            'ffmpeg -y -r 2 -i output/fig%04d.png \
+            -c:v libx264 -vf "format=yuv420p" \
+            output/{0}.mp4'.format(fun.__name__)
+        )
+    # Check for Windows OS
+    elif os.name == 'nt':
+        os.system(
+            'ffmpeg -y -r 2 -i output\fig%%04d.png \
+            -c:v libx264 -vf "format=yuv420p" \
+            output\{0}.mp4'.format(fun.__name__)
+        )
+    # Deleting all temporary '.png' files in 'output' directory
+    import glob
+    out_path = os.path.join('output', '*png')
+    for f in glob.glob(out_path):
+        os.remove(f)
 
 
 def apply_to_graph(fun, G = None):

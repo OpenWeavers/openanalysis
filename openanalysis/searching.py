@@ -7,6 +7,10 @@ __all__ = ['SearchAnalyzer', 'SearchingAlgorithm']
 class SearchingAlgorithm:
     """
     Base class for all Searching algorithms
+    
+    Increment the number of basic comparisions, 'self.count' in the inner-most 
+    loop of your algorithmic implementation every time the control enters the 
+    loop to obtain correct visualization
     """
 
     def __init__(self, name):
