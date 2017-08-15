@@ -10,7 +10,7 @@ OpenAnalysis requires few binary packages to be installed, which are not automat
 3. `libgraphviz-dev` for compiling pygraphviz in Linux
 4. `pkg-config` for compiling pygraphviz in Linux
 5. `python3-tk` as matplotlib backend in Linux
-6. [`Visual C++ 2015 Build Tools`](http://landinghub.visualstudio.com/visual-cpp-build-tools) for compiling pygraphviz in Windows
+6. [Visual C++ 2015 Build Tools](http://landinghub.visualstudio.com/visual-cpp-build-tools) for compiling pygraphviz in Windows
 7. Python 3.5 or later
 
 
