@@ -8,9 +8,9 @@ class BubbleSort(SortingAlgorithm):
 
     def sort(self, array, visualization=False):
         SortingAlgorithm.sort(self, array, visualization)
-        for i in range(0, array.size):
+        for i in range(0, len(array)):
             exch = False
-            for j in range(0, array.size - i - 1):
+            for j in range(0, len(array) - i - 1):
                 self.count += 1
                 if array[j] > array[j + 1]:
                     array[j], array[j + 1] = array[j + 1], array[j]
@@ -29,7 +29,7 @@ class InsertionSort(SortingAlgorithm):
 
     def sort(self, array, visualization=False):
         SortingAlgorithm.sort(self, array, visualization)
-        for i in range(1, array.size):
+        for i in range(1, len(array)):
             ele = array[i]
             ins_pos = i - 1
             while ins_pos >= 0 and ele < array[ins_pos]:
@@ -49,9 +49,9 @@ class SelectionSort(SortingAlgorithm):
 
     def sort(self, array, visualization=False):
         SortingAlgorithm.sort(self, array, visualization)
-        for i in range(array.size):
+        for i in range(len(array)):
             min_index = i
-            for j in range(i + 1, array.size):
+            for j in range(i + 1, len(array)):
                 self.count += 1
                 if array[min_index] > array[j]:
                     min_index = j
@@ -69,9 +69,9 @@ class MergeSort(SortingAlgorithm):
     def sort(self, array, visualization=False):
         SortingAlgorithm.sort(self, array, visualization)
         unit = 1
-        while unit <= array.size:
-            for h in range(0, array.size, unit * 2):
-                l, r = h, min(array.size, h + 2 * unit)
+        while unit <= len(array):
+            for h in range(0, len(array), unit * 2):
+                l, r = h, min(len(array), h + 2 * unit)
                 mid = h + unit
                 # merge xs[h:h + 2 * unit]
                 p, q = l, mid
@@ -98,17 +98,17 @@ class MergeSortRecursive(SortingAlgorithm):
     def sort(self, array, visualization=False):
         SortingAlgorithm.sort(self, array, visualization)
         self.visualization = visualization
-        self.split(array, 0, array.size-1)
+        self.split(array, 0, len(array) - 1)
 
     def split(self, array, low, high):
         if low < high:
             mid = (low + high) // 2
             self.split(array, low, mid)
-            self.split(array, mid+1, high)
-            self.merge(array, low, mid, high)
+            self.split(array, mid + 1, high)
+            self.merge_alternative(array, low, mid, high)
 
     def merge(self, array, low, mid, high):
-        p, q = low, mid+1
+        p, q = low, mid + 1
         while p <= mid and q <= high:
             self.count += 1
             if array[p] <= array[q]:
@@ -121,6 +121,30 @@ class MergeSortRecursive(SortingAlgorithm):
             if self.visualization:
                 self.hist_array = np.vstack([self.hist_array, array])
 
+    def merge_alternative(self, array, low, mid, high):
+        left = np.copy(array[low: mid + 1])
+        right = np.copy(array[mid + 1: high + 1])
+        i, j, k = 0, 0, low
+        while i < len(left) and j < len(right):
+            self.count += 1
+            if left[i] < right[j]:
+                array[k] = left[i]
+                i += 1
+            else:
+                array[k] = right[j]
+                j += 1
+            k += 1
+            if self.visualization:
+                self.hist_array = np.vstack((self.hist_array, array))
+        while i < len(left):
+            array[k] = left[i]
+            i += 1
+            k += 1
+        while j < len(right):
+            array[k] = right[j]
+            j += 1
+            k += 1
+
 
 class HeapSort(SortingAlgorithm):
     def __init__(self):
@@ -129,7 +153,7 @@ class HeapSort(SortingAlgorithm):
     def sort(self, array, visualization=False):
         SortingAlgorithm.sort(self, array, visualization)
         # convert aList to heap
-        length = array.size - 1
+        length = len(array) - 1
         leastParent = int(length / 2)
         for i in range(leastParent, -1, -1):
             self.moveDown(array, i, length, visualization)
@@ -260,8 +284,50 @@ class QuickSort(SortingAlgorithm):
 
     def sort(self, array, visualization=False):
         SortingAlgorithm.sort(self, array, visualization)
-        self.__quickSortIterative(array, 0, array.size - 1, partition_alg=self.__median_of_three,
+        self.__quickSortIterative(array, 0, len(array) - 1, partition_alg=self.__median_of_three,
                                   visualization=visualization)
 
+
+class QucikSortRecursive(SortingAlgorithm):
+    def __init__(self):
+        SortingAlgorithm.__init__(self,"Quick Sort Recursive")
+
+    def sort(self, array, visualization = False):
+        SortingAlgorithm.sort(self,array,visualization)
+        self.visualization = visualization
+        n = len(array)
+        self.quickSort(array, 0, n - 1)
+
+    def partition(self,arr, low, high):
+        i = (low - 1)  # index of smaller element
+        pivot = arr[high]  # pivot
+
+        for j in range(low, high):
+
+            # If current element is smaller than or
+            # equal to pivot
+            if arr[j] <= pivot:
+                # increment index of smaller element
+                i = i + 1
+                arr[i], arr[j] = arr[j], arr[i]
+                if self.visualization:
+                    self.hist_array = np.vstack((self.hist_array,arr))
+
+        arr[i + 1], arr[high] = arr[high], arr[i + 1]
+        return i + 1
+
+    def quickSort(self,arr, low, high):
+        if low < high:
+            # pi is partitioning index, arr[p] is now
+            # at right place
+            pi = self.partition(arr, low, high)
+
+            # Separately sort elements before
+            # partition and after partition
+            self.quickSort(arr, low, pi - 1)
+            self.quickSort(arr, pi + 1, high)
+            if self.visualization:
+                self.hist_array = np.vstack((self.hist_array, arr))
+
 if __name__ == "__main__":
-    SortAnalyzer(MergeSort).visualize(save=True)
+    SortAnalyzer(QucikSortRecursive).visualize(num=500)
