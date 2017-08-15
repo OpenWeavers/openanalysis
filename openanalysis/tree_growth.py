@@ -77,8 +77,8 @@ def tree_growth_visualizer(fun):
     # Check for Windows OS
     elif os.name == 'nt':
         os.system(
-            'ffmpeg -y -r 2 -i output\fig%%04d.png ^
-            -c:v libx264 -vf "format=yuv420p" ^
+            'ffmpeg -y -r 2 -i output\fig%%04d.png \
+            -c:v libx264 -vf "format=yuv420p" \
             output\{0}.mp4'.format(fun.__name__)
         )
     # Deleting all temporary '.png' files in 'output' directory
