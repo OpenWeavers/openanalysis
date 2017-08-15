@@ -12,6 +12,10 @@ __all__ = ['StringMatchingAnalyzer', 'StringMatchingAlgorithm']
 class StringMatchingAlgorithm:
     """
     Base class for all (Comparision Based) String Matching algorithms
+    
+    Increment the number of basic comparisions, 'self.count' in the inner-most 
+    loop of your algorithmic implementation every time the control enters the 
+    loop to obtain correct visualization
     """
 
     def __init__(self, name):
