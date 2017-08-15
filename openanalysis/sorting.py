@@ -66,7 +66,7 @@ class SortAnalyzer:
         Visualizes given Sorting Algorithm
 
         :param num: Number of points that has to be chosen for visualization
-        :param save: Boolean indicating weather to save animation in output/ directory
+        :param save: Boolean indicating whether to save animation in 'output' directory
         """
         plt.title(self.sorter.name + " Visualization")
         plt.xlabel("Array Index")
@@ -98,7 +98,7 @@ class SortAnalyzer:
     def analyze(self, maxpts=1000, progress=True):
         """
         Plots the running time of sorting algorithm
-        Checks for 3 cases, Already Sorted array, reverse sorted array and Shuffled array
+        Checks for 3 cases, pre-sorted array, reverse sorted array and shuffled array
         Analysis is done  by inputting randomly shuffled integer arrays with size staring
         from 100, and varying upto maxpts in the steps of 100, and counting the number of
         basic operations
@@ -145,12 +145,12 @@ class SortAnalyzer:
     @staticmethod
     def compare(algorithms, pts=2000, maxrun=5, progress=True):
         """
-        Compares the given list of Sorting algorithms over  and Plots a bar chart
+        Compares the given list of Sorting algorithms over and Plots a bar chart
 
         :param algorithms: List of Sorting algorithms
         :param pts: Number of elements in testing array
         :param maxrun: Number of iterations to take average
-        :param progress: Whether to show Progress bar or not
+        :param progress: Whether to show progress bar or not
         """
         base_arr = np.arange(pts)
         np.random.shuffle(base_arr)
