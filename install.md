@@ -19,3 +19,9 @@ OpenAnalysis requires few binary packages to be installed, which are not automat
 ```shell
 pip install openanalysis  # or 'pip3' depending on your configuration
 ```
+
+
+## Preferred IDE's
+
+1. PyCharm
+2. Geany
