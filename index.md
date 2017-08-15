@@ -1,12 +1,12 @@
 # openanalysis
-In our daily life, we encounter many algorithms. Knowingly or Unknowingly, algorithms make our life easier. Analysis of algorithms is a special field of interest in Computer Science. Analysis evaluates the algorithm, and leads to invention of faster algorithms. Visualization leads to the better understanding of how algorithms work. The package OpenAnalysis is inteded as a tool for analyzing and visualizing algorithms.
+In our daily life, we encounter many algorithms. Knowingly or unknowingly, algorithms make our life easier. Analysis of algorithms is a special field of interest in Computer Science. Analysis evaluates the algorithm, and leads to invention of faster algorithms. Visualization leads to the better understanding of how algorithms work. The package OpenAnalysis is inteded as a tool for analyzing and visualizing algorithms.
 
-## Supported Kinds of algorithms
+## Supported kinds of algorithms
 
 - Searching
 - Sorting
 - String Matching
-- Tree Growth Based Graph Algorithms
+- Tree Growth based Graph Algorithms
 - Matrix based Dynamic Programming Graph Algorithms
 - Tree like Data Structure analysis and visualization
 
