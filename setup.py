@@ -53,11 +53,12 @@ setup(
         "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
     ],
     install_requires=[
-        'networkx',
         'numpy',
         'matplotlib',
         'pygraphviz',
         'progressbar2',
+        'kivy',
+        'networkx',
     ],
     extras_require={
         "extensions": [
