@@ -57,7 +57,7 @@ setup(
         'matplotlib',
         'pygraphviz',
         'progressbar2',
-        'kivy',
+        'gi',
         'networkx',
     ],
     extras_require={
