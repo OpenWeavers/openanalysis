@@ -1,1 +1,2 @@
 include openanalysis/string_matching_samples/*
+include openanalysis/sd.glade
