@@ -72,14 +72,14 @@ class DataStructureBase:
 
     def draw(self, nth=None):
         if self.get_root() is None:
-            print "No entries yet!"
+            print ("No entries yet!")
         else:
             code = lambda x: "n" + str(abs(x)) if x < 0 else "p" + str(abs(x))
             self.get_graph(self.get_root())
             dfile = open("test_dot.dot", "w")
             dfile.write("strict digraph {\n\tnode [shape = record,height=.1];\n")
             for key in self.graph:
-                if nth is not None and nth==key:
+                if nth is not None and nth == key:
                     dfile.write("\tnode{0} [label = \"<f0> |<f1> {1}|<f2> \"] [color = \"red\"];\n".format(code(key), key))
                 else:
                     dfile.write("\tnode{0} [label = \"<f0> |<f1> {1}|<f2> \"];\n".format(code(key), key))
