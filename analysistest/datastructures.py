@@ -36,48 +36,39 @@ class BinarySearchTree(DataStructureBase):
         if parent is None:
             self.root = newNode
         else:
-            self.graph.add_edge(parent, newNode)
             if parent.data > newNode.data:
                 parent.left = newNode
-                self.graph.node[newNode]['child_status'] = 'left'
             else:
                 parent.right = newNode
-                self.graph.node[newNode]['child_status'] = 'right'
         self.count += 1
 
     def find(self, item):
         node = self.root
         while node is not None:
-            if item < node:
+            if item < node.data:
                 node = node.left
-            elif item > node:
+            elif item > node.data:
                 node = node.right
             else:
                 return True
         return False
-
-    def __contains__(self, item):
-        """
-        To use in operator
-        :param item: item to be found out
-        :return: True if item in self else False
-        example:
-            >>> t = BinarySearchTree()
-            >>> x = [9,2,1,4,3,2,6,7,0]
-            >>> for item in x:
-            >>>     t.insert(x)
-            >>> 0 in t
-                True
-            >>> 10 in t
-                False
-        """
-        return self.find(item)
 
     def delete(self, item):
         if item not in self:
             raise ValueError("{0} not in Tree".format(item))
         pass
         # Implement
+
+    def get_graph(self, rt):
+        if rt is None:
+            return
+        self.graph[rt.data] = {}
+        if rt.left is not None:
+            self.graph[rt.data][rt.left.data] = {'child_status': 'left'}
+            self.get_graph(rt.left)
+        if rt.right is not None:
+            self.graph[rt.data][rt.right.data] = {'child_status': 'right'}
+            self.get_graph(rt.right)
 
 
 class BinaryHeap(DataStructureBase):
@@ -104,7 +95,6 @@ class BinaryHeap(DataStructureBase):
             self.elements[insert_position] = self.elements[int(insert_position / 2)]
             insert_position = int(insert_position / 2)
         self.elements[insert_position] = element
-        self.update_graph()
 
     def delete(self, ele):
         pos = 0
@@ -112,31 +102,32 @@ class BinaryHeap(DataStructureBase):
             pos = self.pos(ele)
         else:
             raise ValueError("{0} not found in Heap".format(ele))
+        pass
 
-    pass
+    def __iter__(self):
+        return iter(self.elements[1:])
 
-    # Implement
-
-    def update_graph(self):
-        H = self.graph
-        H.clear()
+    def get_graph(self, root):
+        self.graph = {x:{} for x in self}
         current_position = 1
         while current_position <= int(self.count / 2):
-            H.add_edge(self.elements[current_position], self.elements[2 * current_position])
-            H.node[self.elements[2 * current_position]]['child_status'] = 'left'
+            current = self.elements[current_position]
+            left_child = self.elements[2 * current_position]
+            self.graph[current][left_child] = {'child_status': 'left'}
             if 2 * current_position + 1 <= self.count:
-                H.add_edge(self.elements[current_position], self.elements[2 * current_position + 1])
-                H.node[self.elements[2 * current_position + 1]]['child_status'] = 'right'
+                right_child = self.elements[2 * current_position + 1]
+                self.graph[current][right_child] = {'child_status': 'right'}
             current_position += 1
 
     def delete_min(self):
         return self.delete(self.elements[1])
 
-    def __contains__(self, item):
+    def find(self, item):
         return item in self.elements[1:]
 
     def pos(self, item):
         return self.elements[1:].index(item)
+
 
 if __name__ == '__main__':
     DataStructureVisualization(BinaryHeap).run()
