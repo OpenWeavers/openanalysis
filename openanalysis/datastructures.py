@@ -1,8 +1,10 @@
 import pygraphviz as pgv
 import gi
 import os
+
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk as gtk
+
 '''
 Usage Instructions:
 
@@ -72,7 +74,7 @@ class DataStructureBase:
 
     def draw(self, nth=None):
         if self.get_root() is None:
-            print ("No entries yet!")
+            print("No entries yet!")
         else:
             code = lambda x: "n" + str(abs(x)) if x < 0 else "p" + str(abs(x))
             self.get_graph(self.get_root())
@@ -80,7 +82,9 @@ class DataStructureBase:
             dfile.write("strict digraph {\n\tnode [shape = record,height=.1];\n")
             for key in self.graph:
                 if nth is not None and nth == key:
-                    dfile.write("\tnode{0} [label = \"<f0> |<f1> {1}|<f2> \"] [color = \"red\"];\n".format(code(key), key))
+                    dfile.write(
+                        "\tnode{0} [label = \"<f0> |<f1> {1}|<f2> \"] [style=filled ,fillcolor = green];\n".format(
+                            code(key), key))
                 else:
                     dfile.write("\tnode{0} [label = \"<f0> |<f1> {1}|<f2> \"];\n".format(code(key), key))
 
@@ -131,7 +135,7 @@ class DataStructureVisualization:
                 dialog = gtk.MessageDialog(None, 0, gtk.MessageType.ERROR,
                                            gtk.ButtonsType.CANCEL, "Value not found ERROR")
                 dialog.format_secondary_text(
-                    "Element not found in the %s"%self.ds.name)
+                    "Element not found in the %s" % self.ds.name)
                 dialog.run()
                 dialog.destroy()
             else:
