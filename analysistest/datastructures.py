@@ -63,8 +63,7 @@ class BinarySearchTree(DataStructureBase):
         if item not in self:
             raise ValueError("{0} not in Tree".format(item))
         else:
-            if self.root is None:
-                return self.root
+            self.count -= 1
             if self.root.data == item and (self.root.left is None or self.root.right is None):
                 if self.root.left is None and self.root.right is None:
                     self.root = None
@@ -120,7 +119,10 @@ class BinaryHeap(DataStructureBase):
         self.elements = [None]
 
     def get_root(self):
-        return self.elements[1]
+        if self.count > 0:
+            return self.elements[1]
+        else:
+            return None
 
     def insert(self, element):
         if element in self:
@@ -134,12 +136,32 @@ class BinaryHeap(DataStructureBase):
         self.elements[insert_position] = element
 
     def delete(self, ele):
-        pos = 0
         if ele in self:
             pos = self.pos(ele)
+            temp = self.elements[self.count]
+            self.elements.remove(temp)
+            self.count -= 1
+            if ele == temp:
+                return
+            self.elements[pos] = temp
+            n = self.count
+            for i in range(n//2, 0, -1):
+                pi = i
+                P = self.elements[pi]
+                heap = False
+                while not heap and 2*pi <= n:
+                    child = 2*pi
+                    if child < n:
+                        if self.elements[child+1] < self.elements[child]:
+                            child += 1
+                    if P < self.elements[child]:
+                        heap = True
+                    else:
+                        self.elements[pi] = self.elements[child]
+                        pi = child
+                self.elements[pi] = P
         else:
             raise ValueError("{0} not found in Heap".format(ele))
-        pass
 
     def __iter__(self):
         return iter(self.elements[1:])
@@ -163,7 +185,7 @@ class BinaryHeap(DataStructureBase):
         return item in self.elements[1:]
 
     def pos(self, item):
-        return self.elements[1:].index(item)
+        return self.elements.index(item)
 
 
 if __name__ == '__main__':
