@@ -74,9 +74,8 @@ class DataStructureBase:
 
     def draw(self, nth=None):
         if self.get_root() is None:
-            dfile = open("test_dot.dot", "w")
-            dfile.write("strict digraph {\n\tnode [shape = record,height=.1];\n}")
-            dfile.close()
+            with open("test_dot.dot", "w") as dfile:
+                dfile.write("strict digraph {\n\tnode [shape = record,height=.1];\n}")
             pgv.AGraph("test_dot.dot").draw(self.file_path, prog="dot", format="png")
         else:
             code = lambda x: "n" + str(abs(x)) if x < 0 else "p" + str(abs(x))
