@@ -52,12 +52,49 @@ class BinarySearchTree(DataStructureBase):
             else:
                 return True
         return False
+    
+    def min_value_node(self):
+        current = self.root
+        while current.left is not None:
+            current = current.left
+        return current
 
     def delete(self, item):
         if item not in self:
             raise ValueError("{0} not in Tree".format(item))
-        pass
-        # Implement
+        else:
+            if self.root is None:
+                return self.root
+            if self.root.data == item and (self.root.left is None or self.root.right is None):
+                if self.root.left is None and self.root.right is None:
+                    self.root = None
+                elif self.root.data == item and self.root.left is None:
+                    self.root = self.root.right
+                elif self.root.data == item and self.root.right is None:
+                    self.root = self.root.left
+                return self.root
+            if item < self.root.data:
+                temp = self.root
+                self.root = self.root.left
+                temp.left = self.delete(item)
+                self.root = temp
+            elif item > self.root.data:
+                temp = self.root
+                self.root = self.root.right
+                temp.right = self.delete(item)
+                self.root = temp
+            else:
+                if self.root.left is None:
+                    return self.root.right
+                elif self.root.right is None:
+                    return self.root.left
+                temp = self.root
+                self.root = self.root.right
+                min_node = self.min_value_node()
+                temp.data = min_node.data
+                temp.right = self.delete(min_node.data)
+                self.root = temp
+            return self.root
 
     def get_graph(self, rt):
         if rt is None:
