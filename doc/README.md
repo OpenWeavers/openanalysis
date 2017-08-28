@@ -8,7 +8,7 @@ Here are some instructions if you want to contribute to the documentation of `op
       %matplotlib inline
       %config InlineBackend.figure_formats={"svg", "pdf"}
       
-- Documentation is hosted at [read the docs](http://openalgorithm.readthedocs.io/en/latest/).
+- Documentation is hosted at [read the docs](http://openanalysis.readthedocs.io/en/latest/).
 - It also generates `pdf` files serving as offline documentation.
 - Documentation generation backend is `sphinx`.
 - `doc/requirements.txt` contains the the list of tools to be present in build server. __DON'T MODIFY IT WITHOUT KNOWING WHAT YOU ARE DOING__
