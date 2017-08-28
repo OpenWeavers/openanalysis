@@ -1,5 +1,6 @@
-from openanalysis.datastructures import DataStructureVisualization, DataStructureBase
+from openanalysis.data_structures import DataStructureVisualization, DataStructureBase
 
+import gi.repository.Gtk as gtk
 
 class BinarySearchTree(DataStructureBase):
     """
@@ -61,7 +62,12 @@ class BinarySearchTree(DataStructureBase):
 
     def delete(self, item):
         if item not in self:
-            raise ValueError("{0} not in Tree".format(item))
+            dialog = gtk.MessageDialog(None, 0, gtk.MessageType.ERROR,
+                                       gtk.ButtonsType.CANCEL, "Value not found ERROR")
+            dialog.format_secondary_text(
+                "Element not found in the %s" % self.name)
+            dialog.run()
+            dialog.destroy()
         else:
             self.count -= 1
             if self.root.data == item and (self.root.left is None or self.root.right is None):
@@ -161,7 +167,12 @@ class BinaryHeap(DataStructureBase):
                         pi = child
                 self.elements[pi] = P
         else:
-            raise ValueError("{0} not found in Heap".format(ele))
+            dialog = gtk.MessageDialog(None, 0, gtk.MessageType.ERROR,
+                                       gtk.ButtonsType.CANCEL, "Value not found ERROR")
+            dialog.format_secondary_text(
+                "Element not found in the %s" % self.name)
+            dialog.run()
+            dialog.destroy()
 
     def __iter__(self):
         return iter(self.elements[1:])
@@ -189,4 +200,4 @@ class BinaryHeap(DataStructureBase):
 
 
 if __name__ == '__main__':
-    DataStructureVisualization(BinaryHeap).run()
+    DataStructureVisualization(BinarySearchTree).run()
