@@ -37,3 +37,9 @@ multiple versions of Python installed)
 
 If all things go well, you have working installation of
 ``OpenAnalysis``.
+
+Documentation
+-------------------
+An extensive documentation introducing Python language, along with exhaustive usage instruction for `OpenAnalysis` is available at https://openanalysis.readthedocs.io/. As this work was originally designed for the Algorithm Lab at CS&E department, SJCE, Mysuru (and cancelled for unfortunate, ill-defined reasons), the documentation follows the flow of a typical lab manual. A beautifully typeset PDF version of the documentation containing around 100 pages is also available at https://openanalysis.readthedocs.io/_/downloads/en/latest/pdf/ , suited for printing and distribution purposes.
+
+You are free to use and modify this work according to your needs, with a credit to OpenWeavers.
